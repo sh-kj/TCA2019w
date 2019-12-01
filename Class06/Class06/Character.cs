@@ -8,6 +8,9 @@ namespace Class06
 {
 	abstract class Character
 	{
+		public string Name
+		{ get; protected set; }
+
 		public int MaxHP
 		{ get; protected set; }
 
@@ -41,8 +44,9 @@ namespace Class06
 		{ get; private set; }
 
 		//敵はコンストラクタで全初期パラメータを決める
-		public Enemy(int maxHP, int attackPower, int defencePower, int gainExp)
+		public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
 		{
+			this.Name = name;
 			this.MaxHP = maxHP;
 			this.HP = maxHP;
 			this.AttackPower = attackPower;
@@ -59,9 +63,17 @@ namespace Class06
 		public int Exp
 		{ get; private set; }
 
-		public Player(int level, int exp, )
+		public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
+		{
+			this.Name = name;
+			this.Level = level;
+			this.Exp = exp;
 
-		//プレイヤーはレベルアップによるパラメータ変化を考慮して再度セットできるようにしておく
+			SetParameter(maxHP, attackPower, defencePower);
+			RecoverAll();
+		}
+
+		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
 		public void SetParameter(int maxHP, int attackPower, int defencePower)
 		{
 			this.MaxHP = maxHP;
@@ -76,7 +88,7 @@ namespace Class06
 		}
 	}
 
-
+	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
 

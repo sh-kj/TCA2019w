@@ -10,7 +10,7 @@ namespace Class06
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("test");
+			Console.WriteLine("test test");
 
 			Console.WriteLine("press return to quit.");
 			Console.ReadLine();

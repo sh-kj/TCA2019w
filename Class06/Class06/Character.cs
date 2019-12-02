@@ -94,6 +94,8 @@ namespace Class06
 
 		public static int CalcDamage(Character attacker, Character target)
 		{
+           int minimumDamage=(attack.Power-target.ta)
+
 			return attacker.AttackPower - target.DefencePower;
 		}
 	}

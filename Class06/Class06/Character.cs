@@ -91,7 +91,6 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-
 		public static int CalcDamage(Character attacker, Character target)
 		{
 			return attacker.AttackPower - target.DefencePower;

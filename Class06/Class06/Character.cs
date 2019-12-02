@@ -32,8 +32,19 @@ namespace Class06
 		{
 			int damage = DamageCalculator.CalcDamage(this, target);
 
-			target.HP -= damage;
+			target.ApplyDamage(damage);
+			
 			return damage;
+		}
+
+		public void ApplyDamage(int damage)
+		{
+			this.HP -= damage;
+			if (this.HP<=0)
+			{
+				this.HP = 0;
+			}
+
 		}
 	}
 
@@ -94,7 +105,12 @@ namespace Class06
 
 		public static int CalcDamage(Character attacker, Character target)
 		{
-			return attacker.AttackPower - target.DefencePower;
+			int dame = attacker.AttackPower - target.DefencePower;
+			if (dame <= 0)
+			{
+				dame = 0;
+			}
+			return dame;
 		}
 	}
 

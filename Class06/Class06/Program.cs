@@ -12,7 +12,7 @@ namespace Class06
 		{
 			
 
-			Console.WriteLine("press return to quit.");
+			Console.WriteLine("press return to quit.okyano");
 			Console.ReadLine();
 		}
 	}

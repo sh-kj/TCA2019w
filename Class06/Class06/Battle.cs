@@ -20,13 +20,27 @@ namespace Class06
 			BattlePlayer = player;
 			BattleEnemy = enemy;
 		}
-		public void AdvanceTurn()
+		public bool AdvanceTurn()
 		{
 			int damage = BattlePlayer.Attack(BattleEnemy);
 			Console.WriteLine(BattlePlayer.Name + "の攻撃！" + BattleEnemy.Name + "に" + damage + "のダメージ！");
 
+			if (!BattleEnemy.IsAlive)
+			{
+				Console.WriteLine(BattleEnemy.Name + "を倒した！");
+				return true;
+			}
+
 			damage = BattleEnemy.Attack(BattlePlayer);
 			Console.WriteLine(BattleEnemy.Name + "の攻撃！" + BattlePlayer.Name + "に" + damage + "のダメージ！");
+			
+			if(!BattlePlayer.IsAlive)
+			{
+				Console.WriteLine(BattlePlayer.Name + "は倒れた...");
+				return true;
+			}
+
+			return false;
 		}
 
 	}

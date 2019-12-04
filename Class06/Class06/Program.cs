@@ -11,6 +11,7 @@ namespace Class06
 		static void Main(string[] args)
 		{
 			
+			Console.Write("AaAaAa");
 
 			Console.WriteLine("press return to quit.");
 			Console.ReadLine();

@@ -28,6 +28,7 @@ namespace Class06
 		{ get { return HP > 0; } }
 
 
+
 		public int Attack(Character target)
 		{
 			int damage = DamageCalculator.CalcDamage(this, target);
@@ -86,15 +87,37 @@ namespace Class06
 		{
 			this.HP = MaxHP;
 		}
+
+		public void AddExp( int gainExp ) {
+			this.Exp += gainExp;
+			//レベルアップ判定
+			if ( this.Exp > 4 ) {
+				Console.WriteLine( this.Name + "はレベルアップした" );
+				this.Level += 1;
+			}
+		}
 	}
 
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
+		private static Random RandomCalculator = 
+			new Random( DateTime.Now.Millisecond );
 
-		public static int CalcDamage(Character attacker, Character target)
-		{
-			return attacker.AttackPower - target.DefencePower;
+		public static int CalcDamage(Character attacker, Character target) {
+			int minDamage = ( attacker.AttackPower - target.DefencePower / 2 ) / 4;
+			int maxDamage = ( attacker.AttackPower - target.DefencePower / 2 ) / 2;
+
+			if ( minDamage < 1 ) {
+				minDamage = 1;
+			}
+			if ( maxDamage < 1 ) {
+				maxDamage = 1;
+			}
+
+			int damage = RandomCalculator.Next( minDamage, maxDamage );
+
+			return damage;
 		}
 	}
 

@@ -10,6 +10,11 @@ namespace Class06
 	{
 		static void Main(string[] args)
 		{
+
+
+
+
+			jklasdfjklsdfjklsdfajkl;asdfjkl;sdf
 			
 
 			Console.WriteLine("press return to quit.");

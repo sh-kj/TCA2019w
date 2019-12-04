@@ -12,6 +12,9 @@ namespace Class06
 		{
 			
 
+
+			dasgfgser
+
 			Console.WriteLine("press return to quit.");
 			Console.ReadLine();
 		}

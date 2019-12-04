@@ -9,10 +9,10 @@ namespace Class06 {
 		static void Main( string[ ] args ) {
 			Console.WriteLine( "ゲームスタート" );
 
-			Player player = new Player( "勇者", 1, 100, 20, 10, 5 );
+			Player player = new Player( "勇者", 1, 0, 20, 10, 5 );
 
 			while ( player.IsAlive ) {
-				Enemy enemy = new Enemy( "スライム", 10, 8, 2, 5 );
+				Enemy enemy = new Enemy( "スライム", 10, 8, 2, 50 );
 				Console.WriteLine( enemy.Name + "が現れた!" );
 
 				Battle battle = new Battle( player, enemy );

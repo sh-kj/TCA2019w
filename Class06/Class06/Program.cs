@@ -12,6 +12,10 @@ namespace Class06
 		{
 			
 
+
+
+
+
 			Console.WriteLine("press return to quit.");
 			Console.ReadLine();
 		}

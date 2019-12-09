@@ -55,14 +55,14 @@ namespace Class06
 		{ get; private set; }
 
 		//敵はコンストラクタで全初期パラメータを決める
-		public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
+		public Enemy(EnemyParameter parameter)
 		{
-			this.Name = name;
-			this.MaxHP = maxHP;
-			this.HP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
-			this.GainExp = gainExp;
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.HP;
+			this.HP = this.MaxHP;
+			this.AttackPower = parameter.attackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GeinExp;
 		}
 	}
 
@@ -102,7 +102,7 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-
+		public static Random provider = new Random( DateTime.Now.Millisecond );
 		public static int CalcDamage(Character attacker, Character target)
 		{
 			int dame = attacker.AttackPower - target.DefencePower;
@@ -113,5 +113,6 @@ namespace Class06
 			return dame;
 		}
 	}
-
 }
+
+

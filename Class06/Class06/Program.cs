@@ -10,16 +10,46 @@ namespace Class06
 	{
 		static void Main(string[] args)
 		{
+			EnemyMaster senaSlime;
 
-			Player player = new Player("俺",1,0,50,3,5);
-
-			while (true)
+			if ( System.IO.File.Exists(@"D:\enemy.json") )
 			{
-				Enemy enemy = new Enemy("敵だよ君",10,1,0,10);
-				Console.WriteLine(           "〇〇〇〇〇〇〇〇〇〇〇〇○○");
-				Console.WriteLine("○"+enemy.Name+"がスポーンした。○");
-				Console.WriteLine(           "〇〇〇〇〇〇〇〇〇〇〇〇〇〇");
+				string json = System.IO.File.ReadAllText( @"D:\enemy.json" );
+
+				senaSlime = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>( json );
+			} else {
+				senaSlime = new EnemyMaster( );
+				senaSlime.Parameters = new List<EnemyParameter>( );
+
+				EnemyParameter senaP = new EnemyParameter( );
+				
+				senaP.Name = "セナスライム";
+				senaP.HP = 10;
+				senaP.attackPower = 5;
+				senaP.DefencePower = 1;
+				senaP.GeinExp = 100;
+
+				senaSlime.Parameters.Add(senaP);
+
+				string yomikomi = Newtonsoft.Json.JsonConvert.SerializeObject( senaSlime );
+				System.IO.File.WriteAllText( @"D:\enemy.json", yomikomi );//テキスト書き込み
+			}
+			
+
+			Player player = new Player("sena",1,0,10,5,5);
+
+			while (player.IsAlive)
+			{
+				Console.ReadLine( );
+				//ランダム関数
+				int index = DamageCalculator.provider.Next( senaSlime.Parameters.Count );
+				//エンカウント
+				Enemy enemy = new Enemy(senaSlime.Parameters[index]);
+
 				Battle battle = new Battle(player,enemy);
+
+				Console.WriteLine(enemy.Name+"が現れた！");
+
 				bool BattleEND = false;
 				while (!BattleEND)
 				{

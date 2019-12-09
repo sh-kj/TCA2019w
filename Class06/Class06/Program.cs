@@ -11,13 +11,77 @@ namespace Class06
 		static void Main(string[] args)
 		{
 
+			 EnemyParameter enemyParameter;
+			EnemyMaster enemyMaster;
+
+			if ( System.IO.File.Exists(@"D:\enemy.json") ) {
+
+				//マスターデータファイルが存在する
+				string Json=System.IO.File.ReadAllText(@"D:\enemy.json");
+
+				enemyParameter=Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyParameter>(Json);
+				enemyMaster=Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(Json);
+			} else {
+
+				//存在しない
+				enemyMaster=new EnemyMaster();
+				enemyMaster.Parameters= new List<EnemyParameter>();
+
+				EnemyParameter enemyParameter=new EnemyParameter();
+				enemyParameter=new EnemyParameter();
+				enemyParameter.Name="メタルいるま";
+				enemyParameter.MaxHP=5;
+				enemyParameter.AttackPower=10;
+				enemyParameter.DefencePower=300;
+				enemyParameter.GainExp=2000;
+
+				enemyMaster.Parameters.Add(enemyParameter);
+
+				string result= Newtonsoft.Json.JsonConvert.SerializeObject(enemyParameter);
+
+				System.IO.File.WriteAllText(@"D:\enemy.json",result);
+			}
+
+
+
+			string json = System.IO.File.ReadAllText(@"D:\enemy.json");
+
+			EnemyParameter parameter= Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyParameter>(json);
+
+			Console.WriteLine(parameter.Name+",HP:"+parameter.MaxHP);
+			/*
+			EnemyParameter parameter=new EnemyParameter();
+			parameter.Name="メタルいるま";
+			parameter.MaxHP=5;
+			parameter.AttackPower=10;
+			parameter.DefencePower=300;
+			parameter.GainExp=2000;
+			
+
+
+			string result= Newtonsoft.Json.JsonConvert.SerializeObject(parameter);
+
+			Console.WriteLine(result);
+			
+
+			System.IO.File.WriteAllText(@"D:\enemy.json",result);
+			*/
+
+
+			Console.ReadLine();
+
+
+			//return;
+
             Player player = new Player("いるま", 1, 0, 20, 8, 5);
 
 
             while (true)
             {
                 //エンカウント   
-                Enemy enemy = new Enemy("いるまモンスター", 7, 7, 3, 5);
+                Enemy enemy = new Enemy(enemyParameter.Name,enemyParameter.MaxHP,enemyParameter.AttackPower,enemyParameter.DefencePower,enemyParameter.GainExp);
+				
+
                 Battle battle =new Battle(player, enemy);
 
                 Console.WriteLine(enemy.Name + "が現れた！");

@@ -53,6 +53,16 @@ namespace Class06
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
 		}
+
+		public Enemy(EnemyParameter parameter){
+
+			this.Name=parameter.Name;
+			this.MaxHP=parameter.MaxHP;
+			this.HP=parameter.MaxHP;
+			this.AttackPower=parameter.AttackPower;
+			this.DefencePower=parameter.DefencePower;
+			this.GainExp=parameter.DefencePower;
+
 	}
 
 	class Player : Character
@@ -91,7 +101,7 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-       private static int Random.RandomProvider=new Random(DateTime.Now.Millisecond);
+       private static Random RandomProvider=new Random(DateTime.Now.Millisecond);
 
 		public static int CalcDamage(Character attacker, Character target)
 		{
@@ -107,4 +117,5 @@ namespace Class06
 		}
 	}
 
+}
 }

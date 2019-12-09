@@ -53,6 +53,15 @@ namespace Class06
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
 		}
+		public Enemy(EnemyProgram parameter)
+		{
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.MaxHP;
+			this.HP = parameter.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GainExp;
+		}
 	}
 
 	class Player : Character
@@ -104,6 +113,7 @@ namespace Class06
 				minimumDamage = 1;
 			if(meximumDamage < 1)
 				meximumDamage = 1;
+
 
 			return attacker.AttackPower - target.DefencePower;
 		}

@@ -11,7 +11,6 @@ namespace Class06
 		static void Main(string[] args)
 		{
 
-			 EnemyParameter enemyParameter;
 			EnemyMaster enemyMaster;
 
 			if ( System.IO.File.Exists(@"D:\enemy.json") ) {
@@ -19,7 +18,6 @@ namespace Class06
 				//マスターデータファイルが存在する
 				string Json=System.IO.File.ReadAllText(@"D:\enemy.json");
 
-				enemyParameter=Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyParameter>(Json);
 				enemyMaster=Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(Json);
 			} else {
 
@@ -79,7 +77,7 @@ namespace Class06
             while (true)
             {
                 //エンカウント   
-                Enemy enemy = new Enemy(enemyParameter.Name,enemyParameter.MaxHP,enemyParameter.AttackPower,enemyParameter.DefencePower,enemyParameter.GainExp);
+                Enemy enemy = new Enemy(enemy.Name,enemyParameter.MaxHP,enemyParameter.AttackPower,enemyParameter.DefencePower,enemyParameter.GainExp);
 				
 
                 Battle battle =new Battle(player, enemy);

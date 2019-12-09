@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Class06 {
 
 	class EnemyMaster {
-		public List<EnemyMaster>
+		public List<EnemyParameter>
 			Parameters;
 
 	}

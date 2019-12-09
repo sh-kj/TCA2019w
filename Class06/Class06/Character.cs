@@ -30,12 +30,20 @@ namespace Class06
 
 		public int Attack(Character target)
 		{
-			int damage = DamageCalculator.CalcDamage(this, target);
+			int damage = DamegeCalture.CalcDamege(this, target);
 
 			target.HP -= damage;
 			return damage;
 		}
-	}
+
+		public void ApplyDamege(int damege){ 
+			this.HP -= damege;
+			if ( this.HP<=0 ) {
+				this.HP=0;
+			}
+
+}
+		}
 
 
 	class Enemy : Character
@@ -114,8 +122,28 @@ namespace Class06
 
 
             return attacker.AttackPower - target.DefencePower;
+				}
+			}
+	}
+
+		static class DamegeCalture{ 
+			
+			
+			
+
+
+		public static int CalcDamege(Character attacker,Character target){ 
+			
+			int dame=attacker.AttackPower-target.DefencePower;
+			if ( dame==0 ) {
+				dame=0;
+				
+				}
+			return dame;
+			}
 		}
 	}
 
-}
-}
+
+
+

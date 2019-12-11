@@ -30,10 +30,18 @@ namespace Class06 {
 				//敵が死んだ
 				Console.WriteLine( BattleEnemy.Name + "を倒した" );
 
-				/*if( BattlePlayer.Experience ) { 
-					Console.WriteLine( BattlePlayer.Name + "はレベルアップをした！！" );
-				}*/
-				return true;
+				BattlePlayer.AddExp(BattleEnemy.GainExp);
+
+                //レベルアップ処理
+                //if (BattlePlayer.Experience) {
+                //    Console.WriteLine(BattlePlayer.Name + "はレベルアップをした！！");
+                //}
+
+                //回復処理
+                //Console.WriteLine( BattlePlayer.Name + "は七つの習慣を使った" );
+				//Console.WriteLine( BattlePlayer.Name + "HPはMaxになった" );
+                
+                return true;
 			}
 
 			//敵→プレイヤーへ攻撃

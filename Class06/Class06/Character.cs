@@ -53,6 +53,16 @@ namespace Class06
 			this.AttackPower = attackPower;
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
+
+		}
+
+		public Enemy( EnemyParameter parameter ) {
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.MaxHP;
+			this.HP = this.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GainExp;
 		}
 	}
 
@@ -94,14 +104,18 @@ namespace Class06
 			if ( this.Exp > 4 ) {
 				Console.WriteLine( this.Name + "はレベルアップした" );
 				this.Level += 1;
+
+				this.MaxHP += 2;
+				this.HP = MaxHP;
 			}
 		}
 	}
 
+
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-		private static Random RandomCalculator = 
+		public static Random RandomCalculator = 
 			new Random( DateTime.Now.Millisecond );
 
 		public static int CalcDamage(Character attacker, Character target) {

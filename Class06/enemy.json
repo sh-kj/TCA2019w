@@ -1,0 +1,18 @@
+{
+  "Parameters": [
+    {
+      "Name": "メタルスライム",
+      "MaxHP": 3,
+      "AttackPower": 8,
+      "DefencePower": 20,
+      "GainExp": 5
+    },
+    {
+      "Name": "おくてぃ～",
+      "MaxHP": 7,
+      "AttackPower": 20,
+      "DefencePower": 5,
+      "GainExp": 100
+    }
+  ]
+}

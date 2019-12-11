@@ -58,8 +58,10 @@ namespace Class06
 		{
 			this.Name = parameter.Name;
 			this.MaxHP = parameter.MaxHP;
-			this.HP = parameter.HP;
-			this.
+			this.HP = parameter.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GainExp;
 		}
 	}
 
@@ -99,11 +101,24 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-
+		public static Random RandomCalculator = new Random(DateTime.Now.Millisecond);
 		public static int CalcDamage(Character attacker, Character target)
 		{
-			return attacker.AttackPower - target.DefencePower;
+			int minDamage = (attacker.AttackPower - target.DefencePower/2)/4;
+			int maxDamage = (attacker.AttackPower - target.DefencePower/2)/4;
+
+			if(minDamage<1){
+				minDamage = 1;
+
+				if(maxDamage < 1){
+					maxDamage = 1;
+				}
+
+			}
+			int damage=RandomCalculator.Next(minDamage,maxDamage);
+			return damage;
 		}
 	}
+
 
 }

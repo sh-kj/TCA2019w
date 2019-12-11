@@ -17,11 +17,18 @@ namespace Class06
 				enemyMaster=Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(json);
 			}
 			catch(Exception e ){
+				Console.WriteLine("マスターデータ読み込みに失敗しました："+e.ToString());
+			}
+
+			//Console.WriteLine(enemyMaster.Parameters[0].Name+","+ enemyMaster.Parameters[0].MaxHP+","+enemyMaster.Parameters[0].AttackPower);
+			
+			if(enemyMaster == null){
 			EnemyParamenter parameter1 = new EnemyParamenter();
 			parameter1.Name = "スラティー";
-			parameter1.MaxHP = 10;
+			parameter1.MaxHP = 5
+					;
 			parameter1.AttackPower = 8;
-			parameter1.DefencePower = 2;
+			parameter1.DefencePower = 1;
 			parameter1.GainExp = 5;
 
 			EnemyParamenter parameter2 = new EnemyParamenter();
@@ -36,34 +43,26 @@ namespace Class06
 			master.Parameters.Add(parameter1);
 			master.Parameters.Add(parameter2);
 			
-			{
-
-			//Console.WriteLine(enemyMaster.Parameters[0].Name+","+ enemyMaster.Parameters[0].MaxHP+","+enemyMaster.Parameters[0].AttackPower);
-			}
-			if(enemyMaster == null){
+			string json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
+				System.IO.File.WriteAllText(@"D:\enemy.json",json);
 				//マスターデータ読み出し失敗。デフォルト値を入れる
 
 			}
 
-			Console.ReadLine();
-			return;
-
 			
-			
-
-			
-			
-
 
 
             Console.WriteLine("GameStart");
+
+				Console.ReadLine();
 
             Player player = new Player("勇者オキャノーン", 1, 0, 20, 10, 5);
 
             while(player.IsAlive)
             {
-				int randomIndex=DamageCalculator
-                Enemy enemy = new Enemy("okuty", 10, 8, 2, 5);
+				int randomIndex=DamageCalculator.RandomCalculator.Next(enemyMaster.Parameters.Count);
+               
+				Enemy enemy = new Enemy(enemyMaster.Parameters[randomIndex]);
                 Console.WriteLine(enemy.Name + "が現れた！");
 
                 //battle
@@ -89,4 +88,4 @@ namespace Class06
 			Console.ReadLine();
 		}
 	}
-	} }
+	} 

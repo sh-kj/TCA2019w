@@ -40,7 +40,7 @@ namespace Class06
 
 			if (!BattlePlayer.IsAlive)     //プレイヤーの生存チェック
 			{
-				Console.WriteLine(BattlePlayer.Name + "は倒れたww");
+				Console.WriteLine(BattlePlayer.Name + "は倒れた...");
 				return true;
 			}
 

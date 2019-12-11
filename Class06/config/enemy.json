@@ -1,0 +1,20 @@
+{
+  "Parameters": [
+    {
+      "Name": "スライム",
+      "ResultLog": "は倒された。",
+      "MaxHP": 4,
+      "AttackPower": 2,
+      "DefencePower": 1,
+      "GainExp": 3
+    },
+    {
+      "Name": "キングスライム",
+      "ResultLog": "は押しつぶされた。",
+      "MaxHP": 15,
+      "AttackPower": 6,
+      "DefencePower": 5,
+      "GainExp": 6
+    }
+  ]
+}

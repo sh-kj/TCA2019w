@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,12 @@ namespace Class06 {
 		public bool AdvaneTurn( /*コマンド内容*/ ) {
 			//プレイヤー → 敵
 			int damege = BattlePlayer.Attack( BattleEnemy );
-			Console.WriteLine( BattlePlayer.Name + "の攻撃!" +
-				BattleEnemy.Name + "に" + damege + "のダメージ!" );
+			Console.WriteLine( BattlePlayer.Name + "の攻撃!\n" +
+				BattleEnemy.Name + "に" + damege + "のダメージ!\n" );
 			//生存チェック
 			if ( !BattleEnemy.IsAlive ) {
 				//死んだら	
-				Console.WriteLine( BattleEnemy.Name + "を倒した。" );
+				Console.WriteLine( BattleEnemy.Name + "を倒した。\n" );
 				
 				/*
 				BattlePlayer.Exp += BattleEnemy.GainExp;
@@ -39,12 +40,12 @@ namespace Class06 {
 
 			//敵 → プレイヤー
 			damege = BattleEnemy.Attack( BattlePlayer );
-			Console.WriteLine( BattleEnemy.Name + "の攻撃!" +
-				BattlePlayer.Name + "に" + damege + "のダメージ!" );
+			Console.WriteLine( BattleEnemy.Name + "の攻撃!\n" +
+				BattlePlayer.Name + "に" + damege + "のダメージ!\n" );
 			//生存チェック
 			if ( !BattlePlayer.IsAlive ) {
 				//死んだら	
-				Console.WriteLine( BattlePlayer.Name + "は倒れた..." );
+				Console.WriteLine( BattlePlayer.Name + BattleEnemy.ResultLog );
 				return true;
 			}
 

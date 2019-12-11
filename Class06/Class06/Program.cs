@@ -7,50 +7,92 @@ using System.Threading.Tasks;
 
 namespace Class06 {
 	class Program {
-
+		
 		const int PLAYER_LEVEL = 0;
 		const int PLAYER_EXP = 0;
 		const int PLAYER_HP = 20;
 		const int PLAYER_ATTACK = 10;
 		const int PLAYER_DEFEND = 5;
-
+		
+		/*
+		//const string ENEMY_NANE = enemyMaster.Parameters[0].Name;
 		const int SLIME_HP = 10;
 		const int SLIME_ATTACK = 8;
 		const int SLIME_DEFEND = 1;
 		const int SLIME_GAINEXP = 5;
-		
-		
-		static void Main( string[ ] args ) {
+		*/
 
-			Console.WriteLine( "ゲームスタート" );
-			Player _player = new Player( "Okuty", PLAYER_LEVEL, PLAYER_EXP, PLAYER_HP, PLAYER_ATTACK, PLAYER_DEFEND );
+		static void Main(string[] args) {
 
-			while ( _player.IsAlive ) {
-				Enemy _enemy = new Enemy( "スライム", SLIME_HP, SLIME_ATTACK, SLIME_DEFEND, SLIME_GAINEXP );
-				Console.WriteLine( _enemy.Name + "が現れた!" );
+			EnemyMaster enemyMaster = null;
+			string json;
+			try {
+				//JSONファイルからデータの読み込み
+				json = System.IO.File.ReadAllText(@"C:\Users\student\Documents\GitHub\TCA2019w\Class06\config\enemy.json");
+				enemyMaster = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(json);
+				//Console.WriteLine(enemyMaster.Parameters[0].Name + ", " + enemyMaster.Parameters[0].MaxHP);
+			} catch ( Exception e ) {
+				Console.WriteLine( "マスターデータの読み込みに失敗しました、\n" + e.ToString( ) + "\nデータを作成しました。\n" );
+			}
+			
+			if (enemyMaster == null) {
+				//マスターデータの読み込みに失敗しているので、デフォルト値でマスターデータを作る。
+				//JSONファイルへパラメーターデータの書き込み準備
+				EnemyParameter enemy_normal_slime = new EnemyParameter();
+				enemy_normal_slime.Name = "スライム";
+				enemy_normal_slime.MaxHP = 4;
+				enemy_normal_slime.AttackPower = 2;
+				enemy_normal_slime.DefencePower = 1;
+				enemy_normal_slime.GainExp = 3;
+				enemy_normal_slime.ResultLog = "は倒された。";
 
-				//バトル処理
-				Battle battle = new Battle( _player, _enemy );
-				bool _battles_end = false;
-				while ( !_battles_end ) {
-					Console.WriteLine( "コマンド？" );
-					Console.ReadLine( );
+				EnemyParameter enemy_king_slime = new EnemyParameter();
+				enemy_king_slime.Name = "キングスライム";
+				enemy_king_slime.MaxHP = 15;
+				enemy_king_slime.AttackPower = 6;
+				enemy_king_slime.DefencePower = 5;
+				enemy_king_slime.GainExp = 6;
+				enemy_king_slime.ResultLog = "は押しつぶされた。";
 
-					_battles_end = battle.AdvaneTurn( );
 
-					if ( !_battles_end ) {
-						Console.WriteLine( _player.Name + "のHP" + _player.HP );
-					}
-				}
+				enemyMaster = new EnemyMaster();
+				enemyMaster.Parameters = new List<EnemyParameter>();
+				enemyMaster.Parameters.Add(enemy_normal_slime);
+				enemyMaster.Parameters.Add(enemy_king_slime);
+
+				//JSONファイルへパラメーターデータの書き込み
+				json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
+				System.IO.File.WriteAllText(@"C:\Users\student\Documents\GitHub\TCA2019w\Class06\config\enemy.json", json);
 
 			}
+	
+			Console.WriteLine("ゲームスタート\n");
+			Player _player = new Player("塚田社長", PLAYER_LEVEL, PLAYER_EXP, PLAYER_HP, PLAYER_ATTACK, PLAYER_DEFEND);
 
+			while (_player.IsAlive) {
+				int randomIndex = DamageCalculator.RandomCalculator.Next( enemyMaster.Parameters.Count );
 
+				//敵の出力
+				Enemy _enemy = new Enemy( enemyMaster.Parameters[ randomIndex ] );
+				Console.WriteLine(_enemy.Name + "が現れた!");
 
+				//バトル処理
+				Battle battle = new Battle(_player, _enemy);
+				bool _battles_end = false;
+				while (!_battles_end) {
+					Console.WriteLine("コマンド？");
+					Console.ReadLine();
 
-			Console.WriteLine( "\nゲームオーバー" );
-			Console.ReadLine( );
+					_battles_end = battle.AdvaneTurn();
 
+					if (!_battles_end) {
+						Console.WriteLine(_player.Name + "のHP" + _player.HP);
+					}
+				}
+			}
+
+			Console.WriteLine("\nゲームオーバー");
+			Console.ReadLine();
 		}
 	}
 }

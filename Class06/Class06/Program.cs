@@ -67,7 +67,8 @@ namespace Class06 {
 			Player player = new Player( "hero", 1, 0, 20, 10, 5 );
 
 			while ( player.IsAlive ) {
-				DamageCalculator.RandomCaculator.Next( enemyMaster.Parameters.Count );
+
+				int randomIndex=DamageCalculator.RandomCaculator.Next( enemyMaster.Parameters.Count );
 				Enemy enemy = new Enemy( enemyMaster.Parameters[0]);
 				Console.WriteLine( enemy.Name + "discover!" );
 				//battle

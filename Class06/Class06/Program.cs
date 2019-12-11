@@ -11,17 +11,13 @@ namespace Class06 {
 		const int PLAYER_LEVEL = 0;
 		const int PLAYER_EXP = 0;
 		const int PLAYER_HP = 20;
-		const int PLAYER_ATTACK = 10;
+		const int PLAYER_ATTACK = 10
+			
+			
+			;
 		const int PLAYER_DEFEND = 5;
 		
-		/*
-		//const string ENEMY_NANE = enemyMaster.Parameters[0].Name;
-		const int SLIME_HP = 10;
-		const int SLIME_ATTACK = 8;
-		const int SLIME_DEFEND = 1;
-		const int SLIME_GAINEXP = 5;
-		*/
-
+	
 		static void Main(string[] args) {
 
 			EnemyMaster enemyMaster = null;
@@ -54,11 +50,28 @@ namespace Class06 {
 				enemy_king_slime.GainExp = 6;
 				enemy_king_slime.ResultLog = "は押しつぶされた。";
 
+				EnemyParameter enemy_client = new EnemyParameter();
+				enemy_client.Name = "頭の悪いクライアント";
+				enemy_client.MaxHP = 3;
+				enemy_client.AttackPower = 10;
+				enemy_client.DefencePower = 10;
+				enemy_client.GainExp = 1;
+				enemy_client.ResultLog = "は無茶苦茶な要求に耐えられず体力がそこを尽きた…";
+
+				EnemyParameter enemy_miyano = new EnemyParameter();
+				enemy_miyano.Name = "みやの";
+				enemy_miyano.MaxHP = 15;
+				enemy_miyano.AttackPower = 1;
+				enemy_miyano.DefencePower = 15;
+				enemy_miyano.GainExp = -5;
+				enemy_miyano.ResultLog = "！触らないで下さい…";
 
 				enemyMaster = new EnemyMaster();
 				enemyMaster.Parameters = new List<EnemyParameter>();
 				enemyMaster.Parameters.Add(enemy_normal_slime);
 				enemyMaster.Parameters.Add(enemy_king_slime);
+				enemyMaster.Parameters.Add(enemy_client);
+				enemyMaster.Parameters.Add(enemy_miyano);
 
 				//JSONファイルへパラメーターデータの書き込み
 				json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);

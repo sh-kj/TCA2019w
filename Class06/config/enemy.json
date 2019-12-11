@@ -15,6 +15,22 @@
       "AttackPower": 6,
       "DefencePower": 5,
       "GainExp": 6
+    },
+    {
+      "Name": "頭の悪いクライアント",
+      "ResultLog": "は無茶苦茶な要求に耐えられず体力がそこを尽きた…",
+      "MaxHP": 3,
+      "AttackPower": 10,
+      "DefencePower": 10,
+      "GainExp": 1
+    },
+    {
+      "Name": "みやの",
+      "ResultLog": "！触らないで下さい…",
+      "MaxHP": 15,
+      "AttackPower": 1,
+      "DefencePower": 15,
+      "GainExp": -5
     }
   ]
 }

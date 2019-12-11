@@ -53,6 +53,16 @@ namespace Class06
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
 		}
+		public Enemy(EnemyParameter parameter)
+		{
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.MaxHP;
+			this.HP = this.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GainExp;
+		}
+
 	}
 
 	class Player : Character
@@ -66,22 +76,38 @@ namespace Class06
 		public int SetExp
 		{ get; private set;}
 
-		public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
+		private int NextExp;
+
+		private PlayerMaster MasterData;
+
+		public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower, PlayerMaster master)
 		{
 			this.Name = name;
 			this.Level = level;
 			this.Exp = exp;
+			this.MasterData = master;
 
-			SetParameter(maxHP, attackPower, defencePower);
+			//SetParameter(maxHP, attackPower, defencePower);
 			RecoverAll();
+		}
+		public Player( PlayerParameter parameter, PlayerMaster master ) {
+			this.MasterData = master;
+			this.Level = parameter.Level;
+			this.Exp = 0;
+			PlayerParameter newParameter = MasterData.GetParameterByLevel(this.Level);
+			SetParameter(newParameter);
+
+			this.HP = this.MaxHP;
 		}
 
 		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
-		public void SetParameter(int maxHP, int attackPower, int defencePower)
+		public void SetParameter(PlayerParameter parameter)
 		{
-			this.MaxHP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
+			this.MaxHP = parameter.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.NextExp = parameter.NextLevelExp;
+
 		}
 
 		//全回復(宿屋)
@@ -92,9 +118,10 @@ namespace Class06
 
 		public void AddExp(int gainExp)
 		{
+			int exp = NextExp;
 			this.Exp += gainExp;
 			//レベルアップ判定
-			if(this.Exp > 4) 
+			if(this.Exp > exp) 
 			{
 
 				Console.WriteLine( this.Name + "はレベルアップした" );
@@ -102,7 +129,12 @@ namespace Class06
 				Console.WriteLine( this.Name + "のLevel:" + this.Level );
 				this.HP = MaxHP;
 
-				this.SetParameter( this.MaxHP += 5, this.AttackPower += 5, this.DefencePower += 5 );
+				PlayerParameter newParameter = MasterData.GetParameterByLevel(this.Level);
+
+				this.SetParameter( newParameter);
+				exp += 5;
+
+
 			}
 		}
 	}
@@ -110,7 +142,7 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-		private static Random RandomCalculator = new Random( DateTime.Now.Millisecond );
+		public static Random RandomCalculator = new Random( DateTime.Now.Millisecond );
 
 		public static int CalcDamage(Character attacker, Character target)
 		{

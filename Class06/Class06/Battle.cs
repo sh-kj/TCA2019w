@@ -28,6 +28,7 @@ namespace Class06
 				Console.WriteLine( BattleEnemy.Name + "を倒した!" );
 
 				BattlePlayer.AddExp(BattleEnemy.GainExp);
+				Console.WriteLine( BattlePlayer.Name + "は" + BattleEnemy.GainExp + "の経験値を獲得！" );
 				return true;
 			}
 

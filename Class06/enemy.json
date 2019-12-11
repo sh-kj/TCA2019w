@@ -8,11 +8,18 @@
       "GainExp": 5
     },
     {
-      "Name": "おくてぃ～",
+      "Name": "にゃんこ",
       "MaxHP": 7,
-      "AttackPower": 20,
+      "AttackPower": 6,
       "DefencePower": 5,
-      "GainExp": 100
+      "GainExp": 5
+    },
+    {
+      "Name": "クリーパー",
+      "MaxHP": 3,
+      "AttackPower": 15,
+      "DefencePower": 3,
+      "GainExp": 5
     }
   ]
 }

@@ -93,12 +93,12 @@ namespace Class06 {
 				Battle battle = new Battle( player, enemy );
 				bool battleEnd = false;
 				while ( !battleEnd ) {
-					Console.WriteLine( "コマンド?" );
+					Console.WriteLine( "Enter = 攻撃" );
 					Console.ReadLine( );
 
 					battleEnd = battle.AdvanceTurn( );
 
-					Console.WriteLine( player.Name + "のHP:" + player.HP );
+					Console.WriteLine( "HP:" + player.HP + Environment.NewLine );
 				}
 			}
 			Console.WriteLine( "ゲームオーバー" );

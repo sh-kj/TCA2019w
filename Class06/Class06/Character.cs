@@ -68,6 +68,9 @@ namespace Class06
 
 	class Player : Character
 	{
+		public static Random RandomCalculator = 
+			new Random( DateTime.Now.Millisecond );
+
 		public int Level
 		{ get; private set; }
 
@@ -102,10 +105,23 @@ namespace Class06
 			this.Exp += gainExp;
 			//レベルアップ判定
 			if ( this.Exp > 4 ) {
+				int minHP = 1;
+				int maxHP = 3;
+
 				Console.WriteLine( this.Name + "はレベルアップした" );
 				this.Level += 1;
 
-				this.MaxHP += 2;
+				Console.WriteLine( this.Name );
+				Console.WriteLine( "Lv." + this.Level );
+
+				if ( minHP < 1 ) {
+					minHP = 1;
+				}
+				if ( maxHP < 1 ) {
+					maxHP = 1;
+				}
+
+				this.MaxHP += RandomCalculator.Next( minHP, maxHP );
 				this.HP = MaxHP;
 			}
 		}

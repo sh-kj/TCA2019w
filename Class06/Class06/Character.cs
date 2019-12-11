@@ -53,6 +53,14 @@ namespace Class06
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
 		}
+
+		public Enemy(EnemyParamenter parameter)
+		{
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.MaxHP;
+			this.HP = parameter.HP;
+			this.
+		}
 	}
 
 	class Player : Character

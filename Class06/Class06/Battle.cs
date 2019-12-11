@@ -21,7 +21,7 @@ namespace Class06
 		public bool AdvanceTurn()
 		{
 			int damege = BattlePlayer.Attack(BattleEnemy);
-			Console.WriteLine(BattlePlayer.Name + "の攻撃！" + BattleEnemy + "に" + damege + "のダメージ！");
+			Console.WriteLine(BattlePlayer.Name + "の攻撃！" + BattleEnemy.Name + "に" + damege + "のダメージ！");
 
 			if (!BattleEnemy.IsAlive)
 			{
@@ -31,7 +31,7 @@ namespace Class06
 
 
 			damege = BattleEnemy.Attack(BattlePlayer);
-			Console.WriteLine(BattleEnemy.Name + "の攻撃！" + BattlePlayer + "に" + damege + "のダメージ！");
+			Console.WriteLine(BattleEnemy.Name + "の攻撃！" + BattlePlayer.Name + "に" + damege + "のダメージ！");
 
 			if (!BattlePlayer.IsAlive)
 			{

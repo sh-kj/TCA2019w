@@ -10,33 +10,65 @@ namespace Class06
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("ゲームスタート");
-
-			Player player = new Player("おきゃの", 1, 0, 20, 10, 5);
-
-			while (true)
-			{
-				Enemy enemy = new Enemy("okuty", 10, 8, 2, 5);
-				Console.WriteLine(enemy.Name + "が現れた！");
-
-				Battle battle = new Battle(player,enemy);
-
-				bool battleIsEnd = false;
-				while (!battleIsEnd)
-				{
-					Console.WriteLine("コマンド？");
-					Console.ReadLine( );
-
-					battleIsEnd = battle.AdvanceTurn();
-
-					Console.WriteLine(player.Name + "のHP：" + player.HP);
+			EnemyMaster enemyMaster = null;
+			try {
+			string json = System.IO.File.ReadAllText( @"D:\enemy.json" );
+			enemyMaster = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>( json );
+				}
+			catch ( Exception e ) {
+				Console.WriteLine( "マスターデータの読み込みに失敗しました"　 + e.ToString( ) );
 				}
 
+			if( enemyMaster == null ) {
+				EnemyParameter parameter1 = new EnemyParameter( );
+			parameter1 .Name = "金";
+			parameter1 .MaxHP = 10;
+			parameter1 .AttackPower = 8;
+			parameter1 .DefencePower = 5;
+			parameter1 .GainExp = 100;
+
+			EnemyParameter parameter2 = new EnemyParameter( );
+			parameter1 .Name = "okuty";
+			parameter1 .MaxHP = 1;
+			parameter1 .AttackPower = 20;
+			parameter1 .DefencePower = 5;
+			parameter1 .GainExp = 100;
+
+			EnemyMaster master = new EnemyMaster( );
+			master .Parameters = new List<EnemyParameter>( );
+			master .Parameters .Add( parameter1 );
+			master .Parameters .Add( parameter2 );
+
+			string json = Newtonsoft .Json .JsonConvert .SerializeObject( master );
+
+			Console .WriteLine( json );
+			System .IO .File .WriteAllText( @"D:\emeny.json", json );
+				}
+
+			Console .WriteLine( "ゲームスタート" );
+
+			Player player = new Player( "おきゃの", 1, 0, 20, 10, 5 );
+
+			while ( true ) {
+				int randomIndex = DamageCalculator.RandomCalculator.Next(enemyMaster.Parameters.Count);
+				Enemy enemy = new Enemy( enemyMaster .Parameters[randomIndex] );
+				Console .WriteLine(enemy .Name + "が現れた！" );
+
+				Battle battle = new Battle( player, enemy );
+
+		bool battleIsEnd = false;
+				while ( !battleIsEnd ) {
+					Console .WriteLine( "コマンド？" );
+					Console .ReadLine( );
+
+					battleIsEnd = battle .AdvanceTurn( );
+
+					Console .WriteLine(player .Name + "のHP：" + player .HP );
+				}
+	Console .WriteLine( "TCAが平和になった" );
+				Console .ReadLine( );
+
 			}
-			Console.WriteLine("ゲームオーバー");
-			Console.ReadLine();
 		}
-
-
-	}
+}
 }

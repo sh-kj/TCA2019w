@@ -37,7 +37,6 @@ namespace Class06
 		}
 	}
 
-
 	class Enemy : Character
 	{
 		public int GainExp
@@ -52,6 +51,16 @@ namespace Class06
 			this.AttackPower = attackPower;
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
+		}
+
+		public  Enemy( EnemyParameter parameter )
+		{
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.MaxHP;
+			this.HP = this.MaxHP;
+			this.AttackPower = parameter.AttackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GainExp;
 		}
 	}
 

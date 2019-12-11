@@ -34,8 +34,6 @@ namespace Class06 {
 				return true;
 			}
 
-
-
 			//敵→プレイヤーへ攻撃
 		    damage = BattleEnemy.Attack( BattlePlayer );
 			Console.WriteLine( BattleEnemy.Name + "の攻撃！" +

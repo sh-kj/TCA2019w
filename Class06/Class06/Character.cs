@@ -110,7 +110,7 @@ namespace Class06
 
 			if(minDamage < 1 ) {
 				minDamage = 1;
-
+				
 				if(maxDamage < 1 ) {
 					maxDamage = 1;
 				}

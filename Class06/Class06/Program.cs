@@ -28,11 +28,11 @@ namespace Class06
 			parameter1 .GainExp = 100;
 
 			EnemyParameter parameter2 = new EnemyParameter( );
-			parameter1 .Name = "okuty";
-			parameter1 .MaxHP = 1;
-			parameter1 .AttackPower = 20;
-			parameter1 .DefencePower = 5;
-			parameter1 .GainExp = 100;
+			parameter2 .Name = "okuty";
+			parameter2 .MaxHP = 1;
+			parameter2 .AttackPower = 20;
+			parameter2 .DefencePower = 5;
+			parameter2 .GainExp = 100;
 
 			EnemyMaster master = new EnemyMaster( );
 			master .Parameters = new List<EnemyParameter>( );
@@ -47,9 +47,11 @@ namespace Class06
 
 			Console .WriteLine( "ゲームスタート" );
 
-			Player player = new Player( "おきゃの", 1, 0, 20, 10, 5 );
+			Player player = new Player( "おきゃの", 1, 0, 60, 50, 20 );
 
-			while ( true ) {
+			while ( player.IsAlive
+				
+				) {
 				int randomIndex = DamageCalculator.RandomCalculator.Next(enemyMaster.Parameters.Count);
 				Enemy enemy = new Enemy( enemyMaster .Parameters[randomIndex] );
 				Console .WriteLine(enemy .Name + "が現れた！" );

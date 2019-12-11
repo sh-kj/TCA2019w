@@ -11,11 +11,8 @@ namespace Class06 {
 		const int PLAYER_LEVEL = 0;
 		const int PLAYER_EXP = 0;
 		const int PLAYER_HP = 20;
-		const int PLAYER_ATTACK = 10
-			
-			
-			;
-		const int PLAYER_DEFEND = 5;
+		const int PLAYER_ATTACK = 10;
+		const int PLAYER_DEFEND = 3;
 		
 	
 		static void Main(string[] args) {
@@ -60,9 +57,9 @@ namespace Class06 {
 
 				EnemyParameter enemy_miyano = new EnemyParameter();
 				enemy_miyano.Name = "みやの";
-				enemy_miyano.MaxHP = 15;
+				enemy_miyano.MaxHP = 5;
 				enemy_miyano.AttackPower = 1;
-				enemy_miyano.DefencePower = 15;
+				enemy_miyano.DefencePower = 2;
 				enemy_miyano.GainExp = -5;
 				enemy_miyano.ResultLog = "！触らないで下さい…";
 

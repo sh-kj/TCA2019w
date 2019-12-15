@@ -10,8 +10,7 @@ namespace Class08
 	{
 		static void Main(string[] args)
 		{
-			
-
+			HandsOn01();
 
 			Console.ReadLine();
 		}

@@ -18,7 +18,8 @@ namespace Class08
 
 		private static void HandsOn01()
 		{
-			int damage = DamageCalculator.Calculate(10, 5);
+			DamageCalculator calculator = new DamageCalculator();
+			int damage = calculator.Calculate(10, 5);
 
 			Console.WriteLine(damage);
 		}
@@ -28,7 +29,7 @@ namespace Class08
 
 	public class DamageCalculator
 	{
-		public static int Calculate(int AttackPoint, int DefencePoint)
+		public int Calculate(int AttackPoint, int DefencePoint)
 		{
 			return AttackPoint - DefencePoint;
 		}

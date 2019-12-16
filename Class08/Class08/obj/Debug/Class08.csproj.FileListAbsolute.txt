@@ -1,0 +1,7 @@
+C:\Users\student\Documents\TCA2019w\Class08\Class08\bin\Debug\Class08.exe.config
+C:\Users\student\Documents\TCA2019w\Class08\Class08\bin\Debug\Class08.exe
+C:\Users\student\Documents\TCA2019w\Class08\Class08\bin\Debug\Class08.pdb
+C:\Users\student\Documents\TCA2019w\Class08\Class08\obj\Debug\Class08.csprojAssemblyReference.cache
+C:\Users\student\Documents\TCA2019w\Class08\Class08\obj\Debug\Class08.csproj.CoreCompileInputs.cache
+C:\Users\student\Documents\TCA2019w\Class08\Class08\obj\Debug\Class08.exe
+C:\Users\student\Documents\TCA2019w\Class08\Class08\obj\Debug\Class08.pdb

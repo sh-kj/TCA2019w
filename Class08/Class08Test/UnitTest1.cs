@@ -30,7 +30,6 @@ namespace Tests
             {
                 int damage = damageCalculator.Calculate(1, 10);
                 Assert.That(damage, Is.GreaterThan(0));
-
             }
         }
 

@@ -31,7 +31,12 @@ namespace Class06
 			if (!BattleEnemy.IsAlive)
 			{
 				Console.WriteLine(BattleEnemy.Name+"は倒れた");
-				return true;
+
+                BattlePlayer.AddExp(BattleEnemy.GainExp,BattlePlayer.Exp);
+
+
+
+                return true;
 			}
 			//敵のターン
 			Console.WriteLine(BattleEnemy.Name + "の攻撃!");

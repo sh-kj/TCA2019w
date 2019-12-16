@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Class06
 {
+    
 	class Program
 	{
+        
 		static void Main(string[] args)
 		{
 			EnemyMaster senaSlime;
-
+            
+            
 			if ( System.IO.File.Exists(@"D:\enemy.json") )
 			{
 				string json = System.IO.File.ReadAllText( @"D:\enemy.json" );
@@ -34,17 +37,28 @@ namespace Class06
 				string yomikomi = Newtonsoft.Json.JsonConvert.SerializeObject( senaSlime );
 				System.IO.File.WriteAllText( @"D:\enemy.json", yomikomi );//テキスト書き込み
 			}
-			
 
-			Player player = new Player("sena",1,0,10,5,5);
+            int www=0,sp=0;
+
+			Player player = new Player("sena",1,0,10,7,5);
+
+            Console.WriteLine("セナのただの冒険が始まった。。。");
 
 			while (player.IsAlive)
 			{
-				Console.ReadLine( );
-				//ランダム関数
-				int index = DamageCalculator.provider.Next( senaSlime.Parameters.Count );
-				//エンカウント
-				Enemy enemy = new Enemy(senaSlime.Parameters[index]);
+                Console.WriteLine("--------------------------");
+                //Console.ReadLine( );
+                //ランダム関数
+                //int index = DamageCalculator.provider.Next( senaSlime.Parameters.Count );
+
+                //エンカウント
+                www++;
+                if (www>=3)
+                {
+                    www = sp;
+                    sp++;
+                }
+				Enemy enemy = new Enemy(senaSlime.Parameters[sp]);
 
 				Battle battle = new Battle(player,enemy);
 
@@ -65,7 +79,7 @@ namespace Class06
 				}
 			}
 
-			Console.WriteLine("press return to quit.");
+			Console.WriteLine("うん、君じゃ無理");
 			Console.ReadLine();
 		}
 	}

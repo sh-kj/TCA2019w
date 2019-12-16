@@ -84,6 +84,11 @@ namespace Class06
 			RecoverAll();
 		}
 
+        public void AddExp(int exp,int p)
+        {
+            
+        }
+
 		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
 		public void SetParameter(int maxHP, int attackPower, int defencePower)
 		{

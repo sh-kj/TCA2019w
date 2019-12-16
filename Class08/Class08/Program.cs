@@ -29,9 +29,26 @@ namespace Class08
 
 	public class DamageCalculator
 	{
+
+        public Random RandomProvider=new Random(DateTime.Now.Millisecond);
+
 		public int Calculate(int AttackPoint, int DefencePoint)
 		{
-			return AttackPoint - DefencePoint;
+            int minimumDamage=(AttackPoint-DefencePoint/2)/4;
+            int maximumDamage=(AttackPoint-DefencePoint/2)/4;
+
+            if (minimumDamage<1)
+            {
+                minimumDamage=1;
+            }
+            if (maximumDamage<1)
+            {
+                maximumDamage=1;
+            }
+
+            int damage=RandomProvider.Next(minimumDamage,maximumDamage);
+
+			return damage;
 		}
 	}
 }

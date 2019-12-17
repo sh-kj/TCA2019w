@@ -33,5 +33,19 @@ namespace Class08
 		{
 			return AttackPoint - DefencePoint;
 		}
+
+		private Random RandomProvider = new Random(DateTime.Now.Millisecond);
+
+		public int CalculateRandom(int AttackPoint, int DefencePoint)
+		{
+			//最低ダメージ＝（攻撃力 - 敵の守備力÷2）÷4
+			//最高ダメージ＝（攻撃力 - 敵の守備力÷2）÷2
+			int minimumDamage = (AttackPoint - DefencePoint / 2) / 4;
+			int maximumDamage = (AttackPoint - DefencePoint / 2) / 2;
+
+			int damage = RandomProvider.Next(minimumDamage, maximumDamage);
+
+			return damage;
+		}
 	}
 }

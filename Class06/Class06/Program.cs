@@ -69,6 +69,8 @@ namespace Class06
 				Battle battle = new Battle( _Daisuke
 					, _okuty, enemy);
 				bool battleisEnd = false;
+				
+
 				while (!battleisEnd)
 				{
 

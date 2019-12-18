@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,13 +25,20 @@ namespace Class06
 			BattleEnemy = enemy;
 		}
 
+		bool okutyDead = false;
+
 		public bool AdvanceTrum(/*コマンド内容*/)
 		{
+			
+
 			int damage = BattlePlayer.Attack(BattleEnemy);
 			int damage2 = BattlePlayer2.Attack(BattleEnemy);
 
-			Console.WriteLine(BattlePlayer.Name + "の攻撃" + BattleEnemy.Name + "に" + damage + "のダメージ");
-			Console.WriteLine(BattlePlayer2.Name + "の攻撃" + BattleEnemy.Name + "に" + damage2 + "のダメージ");
+			Console.WriteLine(BattlePlayer.Name + "の攻撃！" + BattleEnemy.Name + "に" + damage + "のダメージ！");
+
+			if(okutyDead == false ) {
+				Console.WriteLine(BattlePlayer2.Name + "の攻撃！" + BattleEnemy.Name + "に" + damage2 + "のダメージ！");
+			}
 
 			if (!BattleEnemy.IsAlive)
 			{
@@ -40,20 +48,31 @@ namespace Class06
 
 			int random = DamageCalculator.RandomCalculator.Next(10);
 
-			if(random % 2 == 0){
-			damage = BattleEnemy.Attack(BattlePlayer);
-			Console.WriteLine(BattleEnemy.Name + "の攻撃！" +
-			BattlePlayer.Name + "に" + damage + "のダメージ！");
+			if(random % 10 != 0){
+				damage = BattleEnemy.Attack(BattlePlayer);
+				Console.WriteLine(BattleEnemy.Name + "の攻撃！" +
+				BattlePlayer.Name + "に" + damage + "のダメージ！");
 			}else{
 				damage = BattleEnemy.Attack(BattlePlayer2);
-			Console.WriteLine(BattleEnemy.Name + "の攻撃！" +
-			BattlePlayer2.Name + "に" + damage + "のダメージ！");
+				Console.WriteLine(BattleEnemy.Name + "の攻撃！" +
+				BattlePlayer2.Name + "に" + damage + "のダメージ！");
 			}
 
 			if (!BattlePlayer.IsAlive)
 			{
 				Console.WriteLine(BattlePlayer.Name + "は倒れた…");
 				return true;
+			}
+
+			if(!BattlePlayer2.IsAlive)
+			{
+				if ( okutyDead == false ) {
+
+					Console .WriteLine(BattlePlayer2.Name + "はやっと倒れた！！！");
+					Console .WriteLine(BattleEnemy.Name + "は喜んで去っていった！");
+					okutyDead = true;
+				}
+				return false;
 			}
 
 			return false;

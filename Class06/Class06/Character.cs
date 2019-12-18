@@ -27,6 +27,9 @@ namespace Class06
 		public bool IsAlive
 		{ get { return HP > 0; } }
 
+        public int GoinExp 
+            { get; protected set; }
+
 
 		public int Attack(Character target)
 		{
@@ -35,6 +38,7 @@ namespace Class06
 			target.HP -= damage;
 			return damage;
 		}
+
 	}
 
 
@@ -107,7 +111,7 @@ namespace Class06
 		{
             // 最低ダメージ＝（勇者の攻撃力 - 敵の守備力÷2）÷4
 
-            //最高ダメージ＝（勇者の攻撃力 - 敵の守備力÷2）÷2
+            // 最高ダメージ＝（勇者の攻撃力 - 敵の守備力÷2）÷2
             int minDamage = (attacker.AttackPower - target.DefencePower / 2) / 4;
             int maxDamage = (attacker.AttackPower - target.DefencePower / 2) / 2;
 
@@ -119,9 +123,7 @@ namespace Class06
 
             int damage = RandomCalculator.Next(minDamage, maxDamage);
 
-            return damage
-                
-                ;
+            return damage;
 		}
 	}
 

@@ -27,13 +27,13 @@ namespace Class06
             Console.WriteLine(BattlePlayer.Name + "の攻撃" + BattleEnemy.Name + "に" + damage + "のダメージ！");
 
             //敵の生存チェック
-            if(!BattleEnemy.IsAlive)
+            if (!BattleEnemy.IsAlive)
             {
                 //敵が死んだ場合
-                Console.WriteLine(BattleEnemy.Name + "を倒した！！");
+                Console.WriteLine(BattleEnemy.Name + "を倒した！！" + "\n" + BattleEnemy.Name + "から経験値を得た:" + BattleEnemy.GainExp);
                 return true;
             }
-
+           
             //敵からプレイヤーへの攻撃
             damage = BattleEnemy.Attack(BattlePlayer);
             Console.WriteLine(BattleEnemy.Name + "の攻撃！" + BattlePlayer.Name + "に" + damage + "のダメージ！");

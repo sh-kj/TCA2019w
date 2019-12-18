@@ -79,9 +79,11 @@ namespace Class06
                     Console.WriteLine("コマンド？");
                     Console.ReadLine();
 
+
                     battlesEnd = battle.AdvanceTurn();
 
-                    Console.WriteLine(player.Name + "のHP:" + player.HP);
+                    Console.WriteLine(player.Name + "のHP:" + player.HP + "\n" + "経験値:" + player.Exp + enemy.GoinExp);
+
                 }
 
             }

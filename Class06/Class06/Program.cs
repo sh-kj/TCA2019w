@@ -39,19 +39,19 @@ namespace Class06
                 parameter2.DefencePower = 5;
                 parameter2.GainExp = 100;
 
-                EnemyMaster master = new EnemyMaster();
+                enemyMaster = new EnemyMaster();
                 enemyMaster.Parameters = new List<EnemyParameter>();
                 enemyMaster.Parameters.Add(parameter1);
                 enemyMaster.Parameters.Add(parameter2);
 
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
-                System.IO.File.WriteAllText(@"D:\enemy.json", json);
+                System.IO.File.WriteAllText(@"D:enemy.json", json);
             }
             
 
 			Console.WriteLine("Game Start!!");
 
-			Player player = new Player("中野くん", 1, 0, 20, 10, 5);
+			Player player = new Player("中野くん", 1, 0, 20, 30, 10);
 
 			while (player.IsAlive)
 			{

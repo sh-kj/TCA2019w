@@ -27,7 +27,7 @@ namespace Class06
 		public bool AdvanceTurn(/*コマンド内容*/)
 		{
 			int damage =  BattlePlayer.Attack(BattleEnemy);　　　　　//プレイヤーの攻撃
-			Console.WriteLine(BattlePlayer.Name + "の攻撃！！" + BattleEnemy.Name + "に" + damage + "のダメージ！");
+			Console.WriteLine(BattlePlayer.Name + "の攻撃！！\n" + BattleEnemy.Name + "に" + damage + "のダメージ！");
 
 			if (!BattleEnemy.IsAlive)       //敵の生存チェック
 			{
@@ -41,6 +41,7 @@ namespace Class06
 			if (!BattlePlayer.IsAlive)     //プレイヤーの生存チェック
 			{
 				Console.WriteLine(BattlePlayer.Name + "は倒れた...");
+			
 				return true;
 			}
 

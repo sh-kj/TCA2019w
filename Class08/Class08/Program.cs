@@ -4,46 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Class08
-{
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			HandsOn01();
+namespace Class08 {
+	class Program {
+		static void Main( string[ ] args ) {
+			HandsOn01( );
 
-			Console.ReadLine();
+			Console.ReadLine( );
 		}
 
 
-		private static void HandsOn01()
-		{
-			DamageCalculator calculator = new DamageCalculator();
-			int damage = calculator.Calculate(10, 5);
+		private static void HandsOn01( ) {
+			DamageCalculator calculator = new DamageCalculator( );
+			int damage = calculator.Calculate( 10, 5 );
 
-			Console.WriteLine(damage);
+			Console.WriteLine( damage );
 		}
 	}
 
 
 
-	public class DamageCalculator
-	{
-		public int Calculate(int AttackPoint, int DefencePoint)
-		{
-			return AttackPoint - DefencePoint;
+	public class DamageCalculator {
+		public int Calculate( int AttackPoint, int DefencePoint ) {
+			int damege = AttackPoint - DefencePoint;
+			//最低ダメ―ジ保障
+			if ( damege < 1 ) {
+				damege = 1;
+			}
+			return damege;
 		}
 
-		private Random RandomProvider = new Random(DateTime.Now.Millisecond);
+		private Random RandomProvider = new Random( DateTime.Now.Millisecond );
 
-		public int CalculateRandom(int AttackPoint, int DefencePoint)
-		{
+		public int CalculateRandom( int AttackPoint, int DefencePoint ) {
 			//最低ダメージ＝（攻撃力 - 敵の守備力÷2）÷4
 			//最高ダメージ＝（攻撃力 - 敵の守備力÷2）÷2
-			int minimumDamage = (AttackPoint - DefencePoint / 2) / 4;
-			int maximumDamage = (AttackPoint - DefencePoint / 2) / 2;
+			int minimumDamage = ( AttackPoint - DefencePoint / 2 ) / 4;
+			int maximumDamage = ( AttackPoint - DefencePoint / 2 ) / 2;
 
-			int damage = RandomProvider.Next(minimumDamage, maximumDamage);
+			if ( minimumDamage < 1 ) {
+				minimumDamage = 1;
+			}
+			if ( maximumDamage < 1 ) {
+				maximumDamage = 1;
+			}
+			int damage = RandomProvider.Next( minimumDamage, maximumDamage );
 
 			return damage;
 		}

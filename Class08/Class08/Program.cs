@@ -31,7 +31,12 @@ namespace Class08
 	{
 		public int Calculate(int AttackPoint, int DefencePoint)
 		{
-			return AttackPoint - DefencePoint;
+			int damage =  AttackPoint - DefencePoint;
+
+			if ( damage < 1 )
+				damage = 1;
+
+			return damage;
 		}
 
 		private Random RandomProvider = new Random(DateTime.Now.Millisecond);

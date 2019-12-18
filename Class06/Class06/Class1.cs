@@ -17,7 +17,9 @@ namespace Class06 {
 		public int AttackPower;
 		public int DefencePower;
 
-		public int GainExp;
+		public int  GainExp;
+
+		public string Drop;
 	}
 
 }

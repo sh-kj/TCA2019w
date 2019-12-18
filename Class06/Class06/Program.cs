@@ -30,6 +30,7 @@ namespace Class06
 			parameter1.AttackPower = 8;
 			parameter1.DefencePower = 1;
 			parameter1.GainExp = 5;
+			parameter1.Drop = "ペペローション";
 
 			EnemyParamenter parameter2 = new EnemyParamenter();
 			parameter2.Name = "ハゲオク";
@@ -37,11 +38,23 @@ namespace Class06
 			parameter2.AttackPower = 20;
 			parameter2.DefencePower = 5;
 			parameter2.GainExp = 100;
+			parameter2.Drop = "カエルの右腕";
+
+			EnemyParamenter parameter3 = new EnemyParamenter();
+			parameter3.Name = "奥村禿ノ助";
+			parameter3.MaxHP = 20;
+			parameter3.AttackPower = 10;
+			parameter3.DefencePower = 1;
+			parameter3.GainExp = 230;
+			parameter3.Drop = "育毛剤";
+
+
 
 			EnemyMaster master = new EnemyMaster();
 			master.Parameters= new List<EnemyParamenter>();
 			master.Parameters.Add(parameter1);
 			master.Parameters.Add(parameter2);
+			master.Parameters.Add(parameter3);
 			
 			string json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
 				System.IO.File.WriteAllText(@"D:\enemy.json",json);

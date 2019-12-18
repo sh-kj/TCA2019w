@@ -26,6 +26,7 @@ namespace Class06
             if(!BattleEnemy.IsAlive)
             {
                 Console.WriteLine(BattleEnemy.Name + "を倒した！");
+				Console.WriteLine(BattleEnemy.Drop + "を吐き出した！");
                 return true;
             }
             damage = BattleEnemy.Attack(BattlePlayer);

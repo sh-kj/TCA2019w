@@ -24,7 +24,7 @@ namespace Class06
 				{
 				//player attack enemy
 				int damage = BattlePlayer.Attack( BattleEnemy );
-				Console.WriteLine( BattlePlayer.Name + "attack!" + BattleEnemy.Name + "to" + damage + "damage" );
+				Console.WriteLine( BattlePlayer.Name + " attack! " + BattleEnemy.Name + " to " + damage + " damage " );
 				//enemy check live or not?
 				if(!BattleEnemy.IsAlive) 
 				{
@@ -34,7 +34,7 @@ namespace Class06
 				}
 				//enemy attack player
 				damage = BattleEnemy.Attack( BattlePlayer );
-				Console.WriteLine( BattleEnemy.Name + "attack!" +BattlePlayer.Name+"to"+damage+"damage!");
+				Console.WriteLine( BattleEnemy.Name + " attack! " +BattlePlayer.Name+" to "+damage+ " damage! ");
 				//player check dead or not
 				if(!BattlePlayer.IsAlive) 
 				{

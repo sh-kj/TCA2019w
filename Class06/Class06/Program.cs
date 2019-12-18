@@ -21,28 +21,35 @@ namespace Class06
 
 			if( enemyMaster == null ) {
 				EnemyParameter parameter1 = new EnemyParameter( );
-			parameter1 .Name = "金";
+			parameter1 .Name = "okukky";
 			parameter1 .MaxHP = 10;
 			parameter1 .AttackPower = 8;
 			parameter1 .DefencePower = 5;
-			parameter1 .GainExp = 100;
+			parameter1 .GainExp = 50;
 
 			EnemyParameter parameter2 = new EnemyParameter( );
-			parameter2 .Name = "okuty";
-			parameter2 .MaxHP = 1;
+			parameter2 .Name = "金";
+			parameter2 .MaxHP = 30;
 			parameter2 .AttackPower = 20;
 			parameter2 .DefencePower = 5;
 			parameter2 .GainExp = 100;
 
-			EnemyMaster master = new EnemyMaster( );
-			master .Parameters = new List<EnemyParameter>( );
-			master .Parameters .Add( parameter1 );
-			master .Parameters .Add( parameter2 );
+				EnemyParameter parameter3 = new EnemyParameter( );
+				parameter2.Name = "かたおきゃ";
+				parameter2.MaxHP = 100;
+				parameter2.AttackPower = 25;
+				parameter2.DefencePower = 25;
+				parameter2.GainExp = 10000;
 
-			string json = Newtonsoft .Json .JsonConvert .SerializeObject( master );
+				enemyMaster = new EnemyMaster( );
+			enemyMaster .Parameters = new List<EnemyParameter>( );
+			enemyMaster .Parameters .Add( parameter1 );
+			enemyMaster .Parameters .Add( parameter2 );
+
+			string json = Newtonsoft .Json .JsonConvert .SerializeObject( enemyMaster );
 
 			Console .WriteLine( json );
-			System .IO .File .WriteAllText( @"D:\emeny.json", json );
+			System .IO .File .WriteAllText( @"D:\enemy.json", json );
 				}
 
 			Console .WriteLine( "ゲームスタート" );

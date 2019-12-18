@@ -58,6 +58,7 @@ namespace Class06
         {
             this.Name = parameter.Name;
             this.MaxHP = parameter.MaxHP;
+			this.HP = this.MaxHP;
             this.AttackPower = parameter.AttackPower;
             this.DefencePower = parameter.DefencePower;
             this.GainExp = parameter.GainExp;

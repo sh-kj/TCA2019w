@@ -15,8 +15,7 @@ namespace Class06
             {
                 string json = System.IO.File.ReadAllText(@"D:\enemy.json");
 
-                enemyMaster =
-                Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(json);
+                enemyMaster = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>(json);
             }
             catch( Exception e)
             {
@@ -46,6 +45,7 @@ namespace Class06
                 master.Parameters = new List<EnemyParameter>();
                 master.Parameters.Add(parameter1);
                 master.Parameters.Add(parameter2);
+				
 
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(master);
 

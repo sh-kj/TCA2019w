@@ -100,7 +100,7 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-		private static Random RandomProvider = new Random(DateTime.Now.Millisecond);
+		public static Random RandomProvider = new Random(DateTime.Now.Millisecond);
 
 		public static int CalcDamage(Character attacker, Character target)
 		{

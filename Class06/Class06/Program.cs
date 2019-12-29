@@ -21,7 +21,7 @@ namespace Class06
                 enemyMaster = new EnemyMaster();
                 enemyMaster.Parameters = new List<EnemyParameter>();
                 EnemyParameter enemyParameter = new EnemyParameter();
-                enemyParameter.Name = "メタルスライム";
+                enemyParameter.Name = "いるまモンスター";
                 enemyParameter.MaxHP = 5;
                 enemyParameter.AttackPower = 10;
                 enemyParameter.DefencePower = 300;
@@ -33,7 +33,7 @@ namespace Class06
                 System.IO.File.WriteAllText(@"D:\enemy.json", result);
             }
 
-            Player Player = new Player("勇者", 1, 0, 20, 12, 5);
+            Player Player = new Player("いるま", 1, 0, 20, 12, 5);
 
             while (true)
             {
@@ -51,7 +51,7 @@ namespace Class06
                     Console.WriteLine(Player.Name + "HP" + Player.HP);
 
                     //プレイヤーの行動入力（何も）
-                    Console.WriteLine("Enterでターンが進みます");
+                    Console.WriteLine("Enterでターン進行");
                     Console.ReadLine();
                     //プレイヤーと殴り合う
                     battleIsEnd = battle.AdvanceTurn();
@@ -61,9 +61,15 @@ namespace Class06
                     Console.WriteLine("ゲームオーバー");
                     break;
                 }
+                if (!Enemy.IsAlive)
+                {
+                    Console.WriteLine(Enemy.Name + "がやられた");
+
+
+                }
                 Console.WriteLine();
             }
-            Console.WriteLine("てすと");
+            
             Console.WriteLine("press return to quit.");
             Console.ReadLine();
         }

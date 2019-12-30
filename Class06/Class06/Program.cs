@@ -21,10 +21,10 @@ namespace Class06
                 enemyMaster = new EnemyMaster();
                 enemyMaster.Parameters = new List<EnemyParameter>();
                 EnemyParameter enemyParameter = new EnemyParameter();
-                enemyParameter.Name = "いるまモンスター";
+                enemyParameter.Name = "スライム";
                 enemyParameter.MaxHP = 5;
-                enemyParameter.AttackPower = 10;
-                enemyParameter.DefencePower = 300;
+                enemyParameter.AttackPower = 12;
+                enemyParameter.DefencePower = 6;
                 enemyParameter.GainExp = 2000;
 
                 enemyMaster.Parameters.Add(enemyParameter);
@@ -33,7 +33,8 @@ namespace Class06
                 System.IO.File.WriteAllText(@"D:\enemy.json", result);
             }
 
-            Player Player = new Player("いるま", 1, 0, 20, 12, 5);
+            //名前、レベル、経験値、体力、攻撃力、防御力、魔法攻撃力、魔力
+            Player Player = new Player("いるま", 1, 0, 20, 12, 5, 10,30);
 
             while (true)
             {
@@ -49,6 +50,7 @@ namespace Class06
                 {
                     //ターん進行
                     Console.WriteLine(Player.Name + "HP" + Player.HP);
+                    Console.WriteLine(Player.Name + "MP" + Player.MP);
 
                     //プレイヤーの行動入力（何も）
                     Console.WriteLine("Enterでターン進行");
@@ -58,7 +60,8 @@ namespace Class06
                 }
                 if (!Player.IsAlive)
                 {
-                    Console.WriteLine("ゲームオーバー");
+                    Console.WriteLine("いるまがやられた");
+                    //Console.WriteLine("ゲームオーバー");
                     break;
                 }
                 if (!Enemy.IsAlive)
@@ -70,7 +73,7 @@ namespace Class06
                 Console.WriteLine();
             }
             
-            Console.WriteLine("press return to quit.");
+            Console.WriteLine(".........立てないっス");
             Console.ReadLine();
         }
     }

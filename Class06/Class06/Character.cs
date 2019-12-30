@@ -18,6 +18,10 @@ namespace Class06
 
         public int DefencePower { get; protected set; }
 
+        public int MP { get; protected set; }
+
+        public int MaGicAttack { get; protected set; }
+
 
         public bool IsAlive { get { return HP > 0; } }
 
@@ -29,6 +33,20 @@ namespace Class06
             target.HP -= damage;
             return damage;
         }
+
+        public int MaGic(Character sent)
+        {
+            int down = DamegeMagic.MagicDamege(this, sent);
+
+            sent.HP -= down;
+            return down;
+        }
+
+        public int MaGicPoint(Character point)
+        {
+            point.MP -= 10;
+            return 0;
+        }
     }
 
 
@@ -37,13 +55,14 @@ namespace Class06
         public int GainExp { get; private set; }
 
         //敵はコンストラクタで全初期パラメータを決める
-        public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
+        public Enemy(string name, int maxHP, int attackPower, int defencePower, int mp,  int gainExp)
         {
             this.Name = name;
             this.MaxHP = maxHP;
             this.HP = maxHP;
             this.AttackPower = attackPower;
             this.DefencePower = defencePower;
+          
             this.GainExp = gainExp;
         }
         public Enemy(EnemyParameter parameter)
@@ -53,6 +72,8 @@ namespace Class06
             this.HP = parameter.MaxHP;
             this.AttackPower = parameter.AttackPower;
             this.DefencePower = parameter.DefencePower;
+            
+
             this.GainExp = parameter.GainExp;
         }
     }
@@ -62,22 +83,24 @@ namespace Class06
 
         public int Exp { get; private set; }
 
-        public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
+        public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower, int MaGicAttack, int maxmp)
         {
             this.Name = name;
             this.Level = level;
             this.Exp = exp;
 
-            SetParameter(maxHP, attackPower, defencePower);
+            SetParameter(maxHP, attackPower, defencePower, MaGicAttack, maxmp);
             RecoverAll();
         }
 
         //プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
-        public void SetParameter(int maxHP, int attackPower, int defencePower)
+        public void SetParameter(int maxHP, int attackPower, int defencePower, int maGicAttack, int maxmp)
         {
             this.MaxHP = maxHP;
             this.AttackPower = attackPower;
             this.DefencePower = defencePower;
+            this.MaGicAttack = maGicAttack;
+            this.MP = maxmp;
         }
 
         //全回復(宿屋)
@@ -111,6 +134,32 @@ namespace Class06
 
             return damege;
         }
+    }
+    
+    static class DamegeMagic
+    {
+        public static Random RandomMagic = new Random(DateTime.Now.Millisecond);
+
+        public static int MagicDamege(Character attackermagic,Character target)
+        {
+            int miniMagicDamege = (attackermagic.MaGicAttack - target.DefencePower / 2) / 6;
+            int maxMagicDamege = (attackermagic.MaGicAttack - target.DefencePower / 4) / 4;
+
+            if (miniMagicDamege<1)
+            {
+                miniMagicDamege = 1;
+            }
+            if (maxMagicDamege<1)
+            {
+                maxMagicDamege = 1;
+            }
+            int down = RandomMagic.Next(miniMagicDamege, maxMagicDamege);
+
+            return down;
+               
+        }
+
+        
     }
 
 }

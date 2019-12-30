@@ -2,6 +2,7 @@
 
 namespace Class06
 {
+    
     class Battle
     {
         private Player battlePlayer;
@@ -16,12 +17,17 @@ namespace Class06
         {
             //プレイヤーが敵を攻撃
             int damege = battlePlayer.Attack(battleEnemy);
-            Console.WriteLine(battlePlayer.Name + "の攻撃" +
-            battleEnemy.Name + "に" + damege + "のダメージ!");
+            Console.WriteLine(battlePlayer.Name + "の攻撃" +battleEnemy.Name + "に" + damege + "のダメージ!");
+
+           
+            int down = battlePlayer.Attack(battleEnemy);
+            Console.WriteLine(battlePlayer.Name+"の魔法攻撃"+battleEnemy.Name+"に"+ down + "のダメージ！");
+
             //敵が生きているかどうか
             if (!battleEnemy.IsAlive)
             {
                 Console.WriteLine(battleEnemy.Name + "を倒した！");
+               
                 return true;
             }
 
@@ -29,6 +35,7 @@ namespace Class06
             damege = battleEnemy.Attack(battlePlayer);
             Console.WriteLine(battleEnemy.Name + "の攻撃" +
             battlePlayer.Name + "に" + damege + "のダメージ!");
+
             //プレイヤーが生きているかどうか
             if (!battlePlayer.IsAlive)
             {

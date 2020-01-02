@@ -34,7 +34,7 @@ namespace Class06
             }
 
             //名前、レベル、経験値、体力、攻撃力、防御力、魔法攻撃力、魔力
-            Player Player = new Player("いるま", 1, 0, 20, 12, 5, 20,30);
+            Player Player = new Player("いるま", 1, 0, 20, 12, 5, 10,30);
 
             while (true)
             {
@@ -43,32 +43,24 @@ namespace Class06
                 Enemy Enemy = new Enemy(enemyMaster.Parameters[enemyIndex]);
                 Battle battle = new Battle(Player, Enemy);
 
-                Console.WriteLine(Enemy.Name + "が現れた！\n");
+                Console.WriteLine(Enemy.Name + "が現れた！");
 
                 bool battleIsEnd = false;
                 while (!battleIsEnd)
                 {
                     //ターん進行
-                    Console.WriteLine(Player.Name + "のステータス");
-                    Console.WriteLine("レベル" + Player.Level);
-                    Console.WriteLine("HP" + Player.HP);
-                    Console.WriteLine("MP" + Player.MP);
-                    Console.WriteLine("最大攻撃力" + Player.AttackPower);
-                    Console.WriteLine("防御力" + Player.DefencePower);
-                    Console.WriteLine("最大魔法攻撃力" + Player.MaGicAttack);
+                    Console.WriteLine(Player.Name + "HP" + Player.HP);
+                    Console.WriteLine(Player.Name + "MP" + Player.MP);
 
-                    //プレイヤーの行動入力
+                    //プレイヤーの行動入力（何も）
                     Console.WriteLine("Enterでターン進行");
                     Console.ReadLine();
-
                     //プレイヤーと殴り合う
                     battleIsEnd = battle.AdvanceTurn();
                 }
                 if (!Player.IsAlive)
                 {
-                   
-                    //Console.WriteLine("いるまがエリクシールを使って蘇った!");
-                    Console.ReadLine();
+                    Console.WriteLine("いるまがやられた");
                     //Console.WriteLine("ゲームオーバー");
                     break;
                 }

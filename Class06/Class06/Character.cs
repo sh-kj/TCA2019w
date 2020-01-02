@@ -125,9 +125,9 @@ namespace Class06
             {
                 minmumDamege = 1;
             }
-            if (maximumDamage < 1)
+            if (maximumDamage < 12)
             {
-                maximumDamage = 1;
+                maximumDamage = 6;
             }
 
             int damege = RandomProvider.Next(minmumDamege, maximumDamage);
@@ -138,20 +138,22 @@ namespace Class06
     
     static class DamegeMagic
     {
-        public static Random RandomMagic = new Random(DateTime.Now.Millisecond);
+        private static Random randomMagic = new Random(DateTime.Now.Millisecond);
+
+        public static Random RandomMagic { get => randomMagic; set => randomMagic = value; }
 
         public static int MagicDamege(Character attackermagic,Character target)
         {
-            int miniMagicDamege = (attackermagic.MaGicAttack - target.DefencePower / 2) / 6;
-            int maxMagicDamege = (attackermagic.MaGicAttack - target.DefencePower / 4) / 4;
+            int miniMagicDamege = (attackermagic.MaGicAttack - target.DefencePower/2)/2;
+            int maxMagicDamege = (attackermagic.MaGicAttack - target.DefencePower/1)/2 ;
 
-            if (miniMagicDamege<1)
+            if (miniMagicDamege<2)
             {
-                miniMagicDamege = 1;
+                miniMagicDamege = 2;
             }
-            if (maxMagicDamege<1)
+            if (maxMagicDamege<20)
             {
-                maxMagicDamege = 1;
+                maxMagicDamege = 18;
             }
             int down = RandomMagic.Next(miniMagicDamege, maxMagicDamege);
 

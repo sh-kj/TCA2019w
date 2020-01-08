@@ -6,96 +6,133 @@ using System.Threading.Tasks;
 
 namespace Class06
 {
-	abstract class Character
-	{
-		public string Name
-		{ get; protected set; }
+    abstract class Character
+    {
+        public string Name { get; protected set; }
 
-		public int MaxHP
-		{ get; protected set; }
+        public int MaxHP { get; protected set; }
 
-		public int HP
-		{ get; protected set; }
+        public int HP { get; protected set; }
 
-		public int AttackPower
-		{ get; protected set; }
+        public int AttackPower { get; protected set; }
 
-		public int DefencePower
-		{ get; protected set; }
+        public int DefencePower { get; protected set; }
 
 
-		public bool IsAlive
-		{ get { return HP > 0; } }
+        public bool IsAlive { get { return HP > 0; } }
+
+        public int GoinExp { get; protected set; }
 
 
-		public int Attack(Character target)
-		{
-			int damage = DamageCalculator.CalcDamage(this, target);
+        public int Attack(Character target)
+        {
+            int damage = DamageCalculator.CalcDamage(this, target);
 
-			target.HP -= damage;
-			return damage;
-		}
-	}
+            target.HP -= damage;
+            return damage;
+        }
+
+        public int Attack1(Character target)
+        {
+            int goin = GoinCalculator.CalcGoin(this, target);
+
+            target.GoinExp += goin;
+            return goin;
+        }
+    }
 
 
-	class Enemy : Character
-	{
-		public int GainExp
-		{ get; private set; }
+    class Enemy : Character
+    {
+        public int GainExp { get; private set; }
 
-		//敵はコンストラクタで全初期パラメータを決める
-		public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
-		{
-			this.Name = name;
-			this.MaxHP = maxHP;
-			this.HP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
-			this.GainExp = gainExp;
-		}
-	}
+        //敵はコンストラクタで全初期パラメータを決める
+        public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
+        {
+            this.Name = name;
+            this.MaxHP = maxHP;
+            this.HP = maxHP;
+            this.AttackPower = attackPower;
+            this.DefencePower = defencePower;
+            this.GainExp = gainExp;
+        }
 
-	class Player : Character
-	{
-		public int Level
-		{ get; private set; }
+        public Enemy(EnemyParameter parameter)
+        {
+            this.Name = parameter.Name;
+            this.MaxHP = parameter.MaxHP;
+            this.HP = this.MaxHP;
+            this.AttackPower = parameter.AttackPower;
+            this.DefencePower = parameter.DefencePower;
+            this.GainExp = parameter.GainExp;
+        }
+    }
 
-		public int Exp
-		{ get; private set; }
+    class Player : Character
+    {
+        public int Level { get; private set; }
 
-		public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
-		{
-			this.Name = name;
-			this.Level = level;
-			this.Exp = exp;
+        public int Exp { get; private set; }
 
-			SetParameter(maxHP, attackPower, defencePower);
-			RecoverAll();
-		}
+        public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
+        {
+            this.Name = name;
+            this.Level = level;
+            this.Exp = exp;
 
-		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
-		public void SetParameter(int maxHP, int attackPower, int defencePower)
-		{
-			this.MaxHP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
-		}
+            SetParameter(maxHP, attackPower, defencePower);
+            RecoverAll();
+        }
 
-		//全回復(宿屋)
-		public void RecoverAll()
-		{
-			this.HP = MaxHP;
-		}
-	}
+        //プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
+        public void SetParameter(int maxHP, int attackPower, int defencePower)
+        {
+            this.MaxHP = maxHP;
+            this.AttackPower = attackPower;
+            this.DefencePower = defencePower;
+        }
 
-	//ダメージ計算用クラス
-	static class DamageCalculator
-	{
+        //全回復(宿屋)
+        public void RecoverAll()
+        {
+            this.HP = MaxHP;
+        }
+    }
 
-		public static int CalcDamage(Character attacker, Character target)
-		{
-			return attacker.AttackPower - target.DefencePower;
-		}
-	}
+    //ダメージ計算用クラス
+    static class DamageCalculator
+    {
+        public static Random RandomCalculator = new Random(DateTime.Now.Millisecond);
 
+        public static int CalcDamage(Character attacker, Character target)
+        {
+            // 最低ダメージ＝（勇者の攻撃力 - 敵の守備力÷2）÷4
+
+            // 最高ダメージ＝（勇者の攻撃力 - 敵の守備力÷2）÷2
+            int minDamage = (attacker.AttackPower - target.DefencePower / 2) / 4;
+            int maxDamage = (attacker.AttackPower - target.DefencePower / 2) / 2;
+
+            //最低保証1を両方に入れておく
+            if (minDamage < 1)
+                minDamage = 1;
+            if (maxDamage < 1)
+                maxDamage = 1;
+
+            int damage = RandomCalculator.Next(minDamage, maxDamage);
+
+            return damage;
+        }
+    }
+    static class GoinCalculator
+    {
+        public static int CalcGoin(Character attacker, Character target)
+        {
+            int getGoin = attacker.GoinExp + target.GoinExp;
+
+            int goin = getGoin;
+
+            return goin;
+        }
+
+    }
 }

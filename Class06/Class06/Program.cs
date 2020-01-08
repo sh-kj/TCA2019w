@@ -39,12 +39,20 @@ namespace Class06
 				parameter2.DefencePower = 5;
 				parameter2.GainExp = 100;
 
-				enemyMaster = new EnemyMaster();
+                EnemyParameter parameter3 = new EnemyParameter();
+                parameter3.Name = "ヨッシー";
+                parameter3.MaxHP = 30;
+                parameter3.AttackPower = 10;
+                parameter3.DefencePower = 15;
+                parameter3.GainExp = 10;
+
+                enemyMaster = new EnemyMaster();
 				enemyMaster.Parameters = new List<EnemyParameter>();
 				enemyMaster.Parameters.Add(parameter1);
 				enemyMaster.Parameters.Add(parameter2);
+                enemyMaster.Parameters.Add(parameter3);
 
-				string json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
 
 				Console.WriteLine(json);
 				System.IO.File.WriteAllText(@"D:\eney.json", json);
@@ -82,7 +90,7 @@ namespace Class06
 
                     battlesEnd = battle.AdvanceTurn();
 
-                    Console.WriteLine(player.Name + "のHP:" + player.HP + "\n" + "経験値:" + player.Exp + enemy.GoinExp);
+                    Console.WriteLine(player.Name + "のHP:" + player.HP + "\n" + "経験値:" + player.GoinExp);
 
                 }
 

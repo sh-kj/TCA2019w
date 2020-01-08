@@ -70,14 +70,13 @@ namespace Class06
 
 					battleIsEnd = battle.AdvanceTurn();
 
-					battle.AdvanceTurn();
 					Console.WriteLine(player.Name + "のHP:" + player.HP);
 				}
 
 			}
 
 			Console.WriteLine("ゲームオーバー");
-			Console.WriteLine("press return to quit.");
+			//Console.WriteLine("press return to quit.");
 			Console.ReadLine();
 		}
 	}

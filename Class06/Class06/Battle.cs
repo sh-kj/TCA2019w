@@ -31,6 +31,10 @@ namespace Class06
 			if (!BattleEnemy.IsAlive)
 			{
 				Console.WriteLine(BattleEnemy.Name + "を倒した！");
+                //敵が倒したらexpget LevelUp
+                BattlePlayer.LevelUP(BattleEnemy);
+
+                Console.WriteLine("Player　Level:" + BattlePlayer.CurrentLevel + ",exp:" + BattlePlayer.CurrentExp);
 				return true;
 			}
 

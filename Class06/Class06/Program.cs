@@ -35,10 +35,18 @@ namespace Class06
 				parameter2.DefencePower = 5;
 				parameter2.GainExp = 100;
 
+                EnemyParameter parameter3 = new EnemyParameter();
+                parameter3.Name = "ゴブリン";
+                parameter3.MaxHP = 15;
+                parameter3.AttackPower = 10;
+                parameter3.DefencePower = 10;
+                parameter3.GainExp = 150;
+
 				enemyMaster = new EnemyMaster( );
 				enemyMaster.Parameters = new List<EnemyParameter>( );
 				enemyMaster.Parameters.Add( parameter1 );
 				enemyMaster.Parameters.Add( parameter2 );
+                enemyMaster.Parameters.Add(parameter3);
 
 
 				string json = Newtonsoft.Json.JsonConvert.SerializeObject( enemyMaster );

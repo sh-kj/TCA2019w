@@ -20,6 +20,8 @@ namespace Class06 {
 			EnemyMaster enemyMaster = null;
 			string json;
 			try {
+				//コンフィグフォルダの生成
+				System.IO.Directory.CreateDirectory(Environment.CurrentDirectory + @"\config");
 				//JSONファイルからデータの読み込み
 				json = System.IO.File.ReadAllText( Environment.CurrentDirectory + @"\config\enemy.json" );
 				enemyMaster = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>( json );
@@ -72,7 +74,6 @@ namespace Class06 {
 
 				//JSONファイルへパラメーターデータの書き込み
 				json = Newtonsoft.Json.JsonConvert.SerializeObject( enemyMaster );
-				System.IO.Directory.CreateDirectory(Environment.CurrentDirectory + @"\config");
 				System.IO.File.WriteAllText( Environment.CurrentDirectory + @"\config\enemy.json", json );
 
 			}

@@ -53,15 +53,6 @@ namespace Class06
 			this.DefencePower = defencePower;
 			this.GainExp = gainExp;
 		}
-		public Enemy( EnemyParameter Parameter) 
-		{
-			this.Name = Parameter.Name;
-			this.MaxHP = Parameter.MAXHP;
-			this.HP = this.HP;
-			this.AttackPower = Parameter.AttackPower;
-			this.DefencePower = Parameter.DefencePower;
-			this.GainExp = Parameter.GainExp;
-		}
 	}
 
 	class Player : Character
@@ -80,15 +71,6 @@ namespace Class06
 
 			SetParameter(maxHP, attackPower, defencePower);
 			RecoverAll();
-		}
-		public Player(HeroesParameter Parameter) {
-			this.Name = Parameter.Name;
-			this.MaxHP = Parameter.MAXHP;
-			this.HP = this.HP;
-			this.AttackPower = Parameter.AttackPower;
-			this.DefencePower = Parameter.DefencePower;
-			this.Level = Parameter.Level;
-			this.Exp = Parameter.Exp;
 		}
 
 		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
@@ -109,7 +91,7 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-		public static Random RandomCalculator = 
+		private static Random RandomCalculator = 
 			new Random( DateTime.Now.Millisecond );
 
 		public static int CalcDamage(Character attacker, Character target)

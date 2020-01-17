@@ -19,6 +19,7 @@ namespace Class06
 
 		public bool AdvanceTurn()
 		{
+
 			//player attack enemy
 			int damage = BattlePlayer.Attack(BattleEnemy);
 			Console.WriteLine(BattlePlayer.Name + " is attacking " +BattleEnemy.Name+" with "+damage+" damage!");

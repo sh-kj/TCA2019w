@@ -37,7 +37,10 @@ namespace Class06
 
 			Player player = new Player("player", 1, 0, 20, 12, 5);
 
-			Console.WriteLine("Press Enter to Start!");
+			Console.WriteLine("Save The World From Slime!\nPress Enter to Start!");
+			Console.ReadLine();
+
+			bool saved = false;
 
 			while (true)
 			{
@@ -49,31 +52,58 @@ namespace Class06
 
 				Console.WriteLine(enemy.Name + " is appeared!");
 
-				bool battleIsEnd = false;
-				while (!battleIsEnd)
+				while (!saved)
 				{
 					//turn start
 					Console.WriteLine(player.Name + "HP: " +player.HP);
+					Console.WriteLine(enemy.Name + "HP: " + enemy.HP);
 
 					//player action(no input is ok)
 					Console.WriteLine("Press Enter to Continue");
 					Console.ReadLine();
+					
+					//player hp recovery
+					if (player.HP%3==0 && !saved)
+					{
+						player.Recover1();
+						Console.WriteLine("Bonus!!!\nHP Recovered(Small)!!");
+						Console.WriteLine(player.Name + "HP: " + player.HP);
+						Console.WriteLine();
+					}
 
-					//fight
-					battleIsEnd = battle.AdvanceTurn();
+						if (player.HP == 1 && !saved)
+					{
+						player.RecoverHalf();
+						Console.WriteLine("Bonus!!!\nHP Recovered(Large)!!");
+						Console.WriteLine(player.Name + "HP: " + player.HP);
+						Console.WriteLine();
+					}
+
+						//fight
+					saved = battle.AdvanceTurn();
 
 
 				}
+
 				if (!player.IsAlive)
 				{
+					Console.WriteLine();
 					Console.WriteLine("Game Over!");
+					Console.WriteLine();
 					break;
 				}
 
-				Console.WriteLine();
+				if (saved)
+				{
+					Console.WriteLine();
+					Console.WriteLine("You Saved The World!");
+					Console.WriteLine();
+					break;
+				}
+				
 			}
 
-			Console.WriteLine("Press Return to Quit.");
+			Console.WriteLine("Press Return to Quit");
 			Console.ReadLine();
 		}
 	}

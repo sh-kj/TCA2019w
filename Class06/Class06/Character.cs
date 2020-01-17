@@ -35,6 +35,7 @@ namespace Class06
 			target.HP -= damage;
 			return damage;
 		}
+
 	}
 
 
@@ -96,6 +97,18 @@ namespace Class06
 		{
 			this.HP = MaxHP;
 		}
+
+
+		public void RecoverHalf()
+		{
+			this.HP = MaxHP/2;
+		}
+
+		public void Recover1()
+		{
+			this.HP += 1;
+		}
+
 	}
 
 	//ダメージ計算用クラス

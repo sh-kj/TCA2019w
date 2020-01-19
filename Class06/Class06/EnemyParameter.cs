@@ -17,5 +17,6 @@ namespace Class06 {
 		public int DefencePower;
 
 		public int GainExp;
+        public int MoneyGold;
 	}
 }

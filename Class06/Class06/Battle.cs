@@ -18,28 +18,37 @@ namespace Class06
 		}
 		public bool AdvanceTurn()
 		{
+           
 			//プレイヤーが敵を攻撃
 			int damege = battlePlayer.Attack(battleEnemy);
 			Console.WriteLine(battlePlayer.Name + "の攻撃" +	
 			battleEnemy.Name + "に" + damege + "のダメージ!");
+        
 		 　　//敵が生きているかどうか
 			if (!battleEnemy.IsAlive)
 			{ 
 				Console.WriteLine(battleEnemy.Name + "を倒した！");
-				return true;
+                Console.WriteLine();
+                Console.WriteLine(battleEnemy.MoneyGold + "Goldを取得");
+                battlePlayer.Money = battlePlayer.Money + battleEnemy.MoneyGold;
+                Console.WriteLine("現在" + battlePlayer.Money + "Gold所持");
+                Console.ReadLine();
+             
+                return true;
 			}
 
 			//敵がプレイヤーを攻撃
 			damege = battleEnemy.Attack(battlePlayer);
 			Console.WriteLine(battleEnemy.Name + "の攻撃" +
 			battlePlayer.Name + "に" + damege + "のダメージ!");
+
 			//プレイヤーが生きているかどうか
 			if (!battlePlayer.IsAlive)
 			{
 				Console.WriteLine(battlePlayer.Name + "は倒れた..");
 				return true;
 			}
-			return false;
+            return false;
 		}
 	}
 }

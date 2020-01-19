@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace Class06
 {
-	abstract class Character
+	abstract class Character//クラス作成、C++でいう初期化
 	{
-		public string Name
+		public string Name//名前
 		{ get; protected set; }
 
-		public int MaxHP
+		public int MaxHP//最大ＨＰ
 		{ get; protected set; }
 
-		public int HP
+		public int HP//ＨＰ
 		{ get; protected set; }
 
-		public int AttackPower
+		public int AttackPower//攻撃力
 		{ get; protected set; }
 
-		public int DefencePower
+		public int DefencePower//防御力
 		{ get; protected set; }
 
 
-		public bool IsAlive
+		public bool IsAlive//生死判定
 		{ get { return HP > 0; } }
 
 
-		public int Attack(Character target)
+		public int Attack(Character target)//ダメージ
 		{
-			int damage = DamageCalculator.CalcDamage(this, target);
+			int damage = DamageCalculator.CalcDamage(this, target);//ダメージ計算をダメージ計算クラスから参照
 
 			target.HP -= damage;
 			return damage;
@@ -38,9 +38,9 @@ namespace Class06
 	}
 
 
-	class Enemy : Character
+	class Enemy : Character//キャラ（敵と主人公共通）
 	{
-		public int GainExp
+		public int GainExp//経験値
 		{ get; private set; }
 
 		//敵はコンストラクタで全初期パラメータを決める

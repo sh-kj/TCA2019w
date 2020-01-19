@@ -29,7 +29,9 @@ namespace Class06
 				enemyParameter.DefencePower=300;
 				enemyParameter.GainEXP=2000;
 
-				enemyMaster.Parameters.Add(enemyParameter);
+
+
+                enemyMaster.Parameters.Add(enemyParameter);
 
 				string result = Newtonsoft.Json.JsonConvert.SerializeObject(enemyMaster);
 				System.IO.File.WriteAllText(@"D:￥enemy.json",result);
@@ -124,6 +126,7 @@ namespace Class06
 			{
 				//敵がやられた
 				Console.WriteLine(BattleEnemy.Name + "を倒した！！");
+                Console.WriteLine();
 				return true;
 			}
 			//敵がプレイヤーを攻撃
@@ -136,7 +139,7 @@ namespace Class06
 				Console.WriteLine(BattlePlayer.Name + "は倒れた．．．．");
 				return true;
 			}
-			return true;
+			return false;
 		}
 	}
 }

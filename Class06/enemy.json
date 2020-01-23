@@ -1,0 +1,9 @@
+{"Parameters":[
+	{"Name":"メタルスライム","MaxHP":5,"AttackPower":15,"DefencePower":300,"GainExp":2000,"MoneyGold":30},
+	{"Name":"スライム","MaxHP":20,"AttackPower":8,"DefencePower":50,"GainExp":80,"MoneyGold":10},
+	{"Name": "水田達也","MaxHP": 30,"AttackPower": 18,"DefencePower": 15,"GainExp": 160,"MoneyGold":80},
+	{"Name":"ゴールドスライム","MaxHP":10,"AttackPower":13,"DefencePower":80,"GainExp":200,"MoneyGold":200},
+	{"Name":"鮭","MaxHP":250,"AttackPower":10,"DefencePower":20,"GainExp":100,"MoneyGold":100}
+]}
+
+

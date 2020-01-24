@@ -137,6 +137,7 @@ namespace Class06
                 BattlePlayer.Exp += BattleEnemy.GainExp;
                 if (2000 <= BattlePlayer.Exp)
                 {
+                    Console.WriteLine("レベルアップ！！");
                     BattlePlayer.Level += 1;
                     Console.WriteLine("現在のあんたのレベル"+BattlePlayer.Level);
                     this.BattlePlayer.HP = BattlePlayer.MaxHP;

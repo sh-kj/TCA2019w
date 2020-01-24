@@ -27,6 +27,9 @@ namespace Class06
 		public bool IsAlive
 		{ get { return HP > 0; } }
 
+		public bool SPcheck
+		{ get { return HP < 50; } }
+
 
 		public int Attack(Character target)
 		{
@@ -35,8 +38,17 @@ namespace Class06
 			target.HP -= damage;
 			return damage;
 		}
-	}
+		
 
+		public int SPAttack(Character target)
+		{
+			int damageSP = DamageCalculator.Sonshitheend(this, target);
+			
+			target.HP -= damageSP;
+
+			return damageSP;
+		}
+	}
 
 	class Enemy : Character
 	{
@@ -72,6 +84,8 @@ namespace Class06
 			SetParameter(maxHP, attackPower, defencePower);
 			RecoverAll();
 		}
+	
+	
 
 		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
 		public void SetParameter(int maxHP, int attackPower, int defencePower)
@@ -87,6 +101,15 @@ namespace Class06
 			this.HP = MaxHP;
 		}
 	}
+	class Sa : Character
+	{
+			public Sa(string name, int attackPower)
+			{
+				this.AttackPower = attackPower;
+			}
+
+		
+	}
 
 	//ダメージ計算用クラス
 	static class DamageCalculator
@@ -96,6 +119,17 @@ namespace Class06
 		{
 			return attacker.AttackPower - target.DefencePower;
 		}
+		
+		public static int Sonshitheend(Character attacker, Character target)
+		{
+			return ( attacker.AttackPower*99999 ) - target.DefencePower;
+		}
+		public static int Selfabuse(Character attacker,Character target)
+		{
+			return attacker.AttackPower - target.DefencePower;
+		}
+
 	}
+	
 
 }

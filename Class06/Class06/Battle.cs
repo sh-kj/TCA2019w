@@ -33,9 +33,7 @@ namespace Class06
 				Console.WriteLine(BattleEnemy.Name+"は倒れた");
 
                 BattlePlayer.AddExp(BattleEnemy.GainExp,BattlePlayer.Exp);
-
-
-
+                
                 return true;
 			}
 			//敵のターン

@@ -14,7 +14,6 @@ namespace Class06
 		{
 			EnemyMaster senaSlime;
             
-            
 			if ( System.IO.File.Exists(@"D:\enemy.json") )
 			{
 				string json = System.IO.File.ReadAllText( @"D:\enemy.json" );

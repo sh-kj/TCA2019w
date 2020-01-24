@@ -24,12 +24,17 @@ namespace Class06
 
 				EnemyParameter enemyParameter=new EnemyParameter();
 				enemyParameter.Name="メタルスライム";
-				enemyParameter.MaxHP=5;
-				enemyParameter.AttackPower=10;
+				enemyParameter.MaxHP=1;
+				enemyParameter.AttackPower=5;
 				enemyParameter.DefencePower=300;
 				enemyParameter.GainEXP=2000;
 
-
+                
+                //enemyParameter.Name = "みんみん";
+                //enemyParameter.MaxHP = 10;
+                //enemyParameter.AttackPower = 2;
+                //enemyParameter.DefencePower = 200;
+                //enemyParameter.GainEXP = 50;
 
                 enemyMaster.Parameters.Add(enemyParameter);
 
@@ -114,24 +119,34 @@ namespace Class06
 		{
 			BattlePlayer=player;
 			BattleEnemy=enemy;
+            
 		
 	}
-		public bool AdvanceTurn()
+		public bool AdvanceTurn()//戦闘処理
 		{
 			//プレイヤーが敵を攻撃
-			int damage=BattlePlayer.Attack(BattleEnemy);
-			//プレイヤーが敵を慰める
+			int damage=BattlePlayer.Attack(BattleEnemy);//
+			//プレイヤーが敵を殴る
 			Console.WriteLine(BattlePlayer.Name + "の攻撃！！" + BattleEnemy.Name + "に" + damage + "のダメージ！！");
 			if (!BattleEnemy.IsAlive)
 			{
 				//敵がやられた
 				Console.WriteLine(BattleEnemy.Name + "を倒した！！");
                 Console.WriteLine();
+                Console.WriteLine(BattleEnemy.GainExp+"経験値の獲得！");
+                BattlePlayer.Exp += BattleEnemy.GainExp;
+                if (2000 <= BattlePlayer.Exp)
+                {
+                    BattlePlayer.Level += 1;
+                    Console.WriteLine("現在のあんたのレベル"+BattlePlayer.Level);
+                    this.BattlePlayer.HP = BattlePlayer.MaxHP;
+                    Console.WriteLine("レベルアップにより体力全回復！！");
+                }
 				return true;
 			}
 			//敵がプレイヤーを攻撃
 			damage=BattleEnemy.Attack(BattlePlayer);
-			//敵がプレイヤーを慰める
+			//敵がプレイヤーを殴る
 			Console.WriteLine(BattleEnemy.Name + "の攻撃！！" + BattlePlayer.Name + "に" + damage + "のダメージ！！");
 			if(!BattlePlayer.IsAlive)
 			{

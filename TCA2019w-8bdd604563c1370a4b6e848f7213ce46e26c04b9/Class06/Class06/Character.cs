@@ -12,10 +12,10 @@ namespace Class06
 		{ get; protected set; }
 
 		public int MaxHP//最大ＨＰ
-		{ get; protected set; }
-
+		{ get; set; }
+    
 		public int HP//ＨＰ
-		{ get; protected set; }
+		{ get; set; }
 
 		public int AttackPower//攻撃力
 		{ get; protected set; }
@@ -38,38 +38,38 @@ namespace Class06
 	}
 
 
-	class Enemy : Character//キャラ（敵と主人公共通）
-	{
-		public int GainExp//経験値
-		{ get; private set; }
+	//class Enemy : Character//キャラ（敵と主人公共通）
+	//{
+	//	//public int GainExp//経験値
+	//	//{ get; private set; }
 
-		//敵はコンストラクタで全初期パラメータを決める
-		public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
-		{
-			this.Name = name;
-			this.MaxHP = maxHP;
-			this.HP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
-			this.GainExp = gainExp;
-		}
-		public Enemy(EnemyParameter parameter){
-			this.Name = parameter.Name;
-			this.MaxHP = parameter.MaxHP;
-			this.HP = this.MaxHP;
-			this.AttackPower = parameter.AttackPower;
-			this.DefencePower = parameter.DefencePower;
-			this.GainExp = parameter.GainEXP;
-		}
-	}
+	//	////敵はコンストラクタで全初期パラメータを決める
+	//	//public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
+	//	//{
+	//	//	this.Name = name;
+	//	//	this.MaxHP = maxHP;
+	//	//	this.HP = maxHP;
+	//	//	this.AttackPower = attackPower;
+	//	//	this.DefencePower = defencePower;
+	//	//	this.GainExp = gainExp;
+	//	//}
+	//	//public Enemy(EnemyParameter parameter){
+	//	//	this.Name = parameter.Name;
+	//	//	this.MaxHP = parameter.MaxHP;
+	//	//	this.HP = this.MaxHP;
+	//	//	this.AttackPower = parameter.AttackPower;
+	//	//	this.DefencePower = parameter.DefencePower;
+	//	//	this.GainExp = parameter.GainEXP;
+	//	//}
+	//}
 
 	class Player : Character
 	{
 		public int Level
-		{ get; private set; }
+		{ get;  set; }
 
 		public int Exp
-		{ get; private set; }
+		{ get;  set; }
 
 		public Player(string name, int level, int exp, int maxHP, int attackPower, int defencePower)
 		{
@@ -90,7 +90,7 @@ namespace Class06
 		}
 
 		//全回復(宿屋)
-		public void RecoverAll()
+		 void RecoverAll()
 		{
 			this.HP = MaxHP;
 		}

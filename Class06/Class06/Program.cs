@@ -10,10 +10,12 @@ namespace Class06
 	class Program
 	{
         
-		static void Main(string[] args)
+
+        static void Main(string[] args)
 		{
 			EnemyMaster senaSlime;
-            
+            int countene = 0;
+            string str;
 			if ( System.IO.File.Exists(@"D:\enemy.json") )
 			{
 				string json = System.IO.File.ReadAllText( @"D:\enemy.json" );
@@ -67,18 +69,36 @@ namespace Class06
 				while (!BattleEND)
 				{
 
-					//ターン開始
-					//プレーヤーの行動入力（何も受ける情報はない）
-					Console.WriteLine("EnterでターンEND");
+                    //ターン開始
+                    //プレーヤーの行動入力（何も受ける情報はない）
+                    Console.WriteLine();
+                    Console.WriteLine("1→通常攻撃　2→回復　3→アイテム攻撃");
+                    string line = System.Console.ReadLine();
+                    string[] stArrayData = line.Split(' ');
+                    int[] data = new int[stArrayData.Length];
+                    while (data[0] != 1 && data[0] != 2 && data[0] != 3)
+                    {
+                        if (data[0]!=1&& data[0] != 2&&data[0]!=3)
+                        {
+                            Console.WriteLine("errorです。もう一度やり直してください。");
+                        }
+                        line = System.Console.ReadLine();
+                        stArrayData = line.Split(' ');
+                        data = new int[stArrayData.Length];
+                    }
+                    Console.WriteLine("EnterでターンEND");
 					Console.ReadLine();
 					BattleEND = battle.AdvanceTurn();
 
 
 
 				}
+                countene++;
 			}
 
 			Console.WriteLine("うん、君じゃ無理");
+			Console.WriteLine("");
+			Console.WriteLine("倒した敵の数"+countene);
 			Console.ReadLine();
 		}
 	}

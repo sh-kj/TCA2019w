@@ -1,0 +1,10 @@
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\obj\Debug\Class06.csprojAssemblyReference.cache
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\obj\Debug\Class06.csproj.CoreCompileInputs.cache
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\bin\Debug\Class06.exe.config
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\bin\Debug\Class06.exe
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\bin\Debug\Class06.pdb
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\bin\Debug\Newtonsoft.Json.dll
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\bin\Debug\Newtonsoft.Json.xml
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\obj\Debug\Class06.csproj.CopyComplete
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\obj\Debug\Class06.exe
+C:\Users\iruma\OneDrive\ドキュメント\GitHub\TCA2019w\TCA2019w-8bdd604563c1370a4b6e848f7213ce46e26c04b9\Class06\Class06\obj\Debug\Class06.pdb

@@ -89,8 +89,33 @@ namespace Class06
             
         }
 
-		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
-		public void SetParameter(int maxHP, int attackPower, int defencePower)
+        public void PowerDown()
+        {
+            int goukei = AttackPower - 20;
+            this.AttackPower = goukei;
+            goukei = DefencePower - 20;
+            this.DefencePower = goukei;
+            goukei = MaxHP - 10;
+            this.MaxHP = goukei;
+        }
+        public void attackPowerUP(int a)
+        {
+            int goukei = AttackPower + a;
+            this.AttackPower =goukei;
+        }
+        public void MaxHPUP(int a)
+        {
+            int goukei = MaxHP + a;
+            this.MaxHP = goukei;
+        }
+        public void DefenceUP(int a)
+        {
+            int goukei = DefencePower + a;
+            this.DefencePower = goukei;
+        }
+
+        //プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
+        public void SetParameter(int maxHP, int attackPower, int defencePower)
 		{
 			this.MaxHP = maxHP;
 			this.AttackPower = attackPower;

@@ -1,0 +1,42 @@
+{
+  "Parameters": 
+  [
+
+    {
+      "Name": "セナスライム",
+      "HP": 10,
+      "attackPower": 5,
+      "DefencePower": 0,
+      "GeinExp": 50
+    },
+    {
+      "Name": "セナボーン",
+      "HP": 15,
+      "attackPower": 4,
+      "DefencePower": 0,
+      "GeinExp": 75
+    },
+    {
+      "Name": "セナナイト",
+      "HP": 5,
+      "attackPower": 10,
+      "DefencePower": 3,
+      "GeinExp": 100
+    },
+    {
+      "Name": "セナキング",
+      "HP": 1000,
+      "attackPower": 1,
+      "DefencePower": 5,
+      "GeinExp": 100000
+    },
+    {
+      "Name": "ブラックセナ",
+      "HP": 100,
+      "attackPower": 50,
+      "DefencePower": -3,
+      "GeinExp": 1
+    }
+
+  ]
+}

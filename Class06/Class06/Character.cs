@@ -32,8 +32,19 @@ namespace Class06
 		{
 			int damage = DamageCalculator.CalcDamage(this, target);
 
-			target.HP -= damage;
+			target.ApplyDamage(damage);
+			
 			return damage;
+		}
+
+		public void ApplyDamage(int damage)
+		{
+			this.HP -= damage;
+			if (this.HP<=0)
+			{
+				this.HP = 0;
+			}
+
 		}
 	}
 
@@ -44,14 +55,14 @@ namespace Class06
 		{ get; private set; }
 
 		//敵はコンストラクタで全初期パラメータを決める
-		public Enemy(string name, int maxHP, int attackPower, int defencePower, int gainExp)
+		public Enemy(EnemyParameter parameter)
 		{
-			this.Name = name;
-			this.MaxHP = maxHP;
-			this.HP = maxHP;
-			this.AttackPower = attackPower;
-			this.DefencePower = defencePower;
-			this.GainExp = gainExp;
+			this.Name = parameter.Name;
+			this.MaxHP = parameter.HP;
+			this.HP = this.MaxHP;
+			this.AttackPower = parameter.attackPower;
+			this.DefencePower = parameter.DefencePower;
+			this.GainExp = parameter.GeinExp;
 		}
 	}
 
@@ -73,8 +84,38 @@ namespace Class06
 			RecoverAll();
 		}
 
-		//プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
-		public void SetParameter(int maxHP, int attackPower, int defencePower)
+        public void AddExp(int exp,int p)
+        {
+            
+        }
+
+        public void PowerDown()
+        {
+            int goukei = AttackPower - 20;
+            this.AttackPower = goukei;
+            goukei = DefencePower - 20;
+            this.DefencePower = goukei;
+            goukei = MaxHP - 10;
+            this.MaxHP = goukei;
+        }
+        public void attackPowerUP(int a)
+        {
+            int goukei = AttackPower + a;
+            this.AttackPower =goukei;
+        }
+        public void MaxHPUP(int a)
+        {
+            int goukei = MaxHP + a;
+            this.MaxHP = goukei;
+        }
+        public void DefenceUP(int a)
+        {
+            int goukei = DefencePower + a;
+            this.DefencePower = goukei;
+        }
+
+        //プレイヤーのパラメータはレベルアップによる変化を考慮して再度セットできるようにしておく
+        public void SetParameter(int maxHP, int attackPower, int defencePower)
 		{
 			this.MaxHP = maxHP;
 			this.AttackPower = attackPower;
@@ -91,11 +132,17 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-
+		public static Random provider = new Random( DateTime.Now.Millisecond );
 		public static int CalcDamage(Character attacker, Character target)
 		{
-			return attacker.AttackPower - target.DefencePower;
+			int dame = attacker.AttackPower - target.DefencePower;
+			if (dame <= 0)
+			{
+				dame = 0;
+			}
+			return dame;
 		}
 	}
-
 }
+
+

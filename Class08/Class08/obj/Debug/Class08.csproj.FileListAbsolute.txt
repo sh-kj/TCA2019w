@@ -1,7 +1,0 @@
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\bin\Debug\Class08.exe.config
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\bin\Debug\Class08.exe
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\bin\Debug\Class08.pdb
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\obj\Debug\Class08.csprojAssemblyReference.cache
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\obj\Debug\Class08.csproj.CoreCompileInputs.cache
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\obj\Debug\Class08.exe
-C:\Users\平澤悠悟\Documents\GitHub\TCA2019w\Class08\Class08\obj\Debug\Class08.pdb

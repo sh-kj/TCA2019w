@@ -26,7 +26,9 @@ namespace Class06
             if (!BattleEnemy.IsAlive){
                 //敵が死亡した
                 Console.WriteLine(BattleEnemy.Name + "を倒した！");
-                return true;
+				Console.WriteLine(BattlePlayer.Name + "は"+BattleEnemy.GainExp+"のEXPを手に入れた！");
+
+				return true;
             }
 
             //敵がプレイヤーを攻撃

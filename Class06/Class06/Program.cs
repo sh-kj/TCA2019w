@@ -11,10 +11,10 @@ namespace Class06
 		static void Main(string[] args)
 		{
 			EnemyMaster enemyMaster;
-			if ( System.IO.File.Exists( @"D:\enemy.json" ) )
+			if ( System.IO.File.Exists( @"aiueo" ))
 			{
 				//マスターデータファイルが存在する
-				string json = System.IO.File.ReadAllText( @"D:\enemy.json" );
+				string json = System.IO.File.ReadAllText( @"aiueo" );
 				enemyMaster = Newtonsoft.Json.JsonConvert.DeserializeObject<EnemyMaster>( json );
 			}
 			else
@@ -26,17 +26,17 @@ namespace Class06
 				EnemyParameter enemyParameter = new EnemyParameter( );
 				enemyParameter.Name = "メタルスライム";
 				enemyParameter.MaxHP = 5;
-				enemyParameter.AttackPower = 10;
-				enemyParameter.DefencePower = 300;
+				enemyParameter.AttackPower = 55;
+				enemyParameter.DefencePower = 100;
 				enemyParameter.GainExp = 2000;
 
 				enemyMaster.Parameters.Add( enemyParameter );
 
 				string result = Newtonsoft.Json.JsonConvert.SerializeObject( enemyMaster );
-				System.IO.File.WriteAllText( @"D:\enemy.json", result );
+				System.IO.File.WriteAllText( @"aiueo", result );
 			}
 
-			Player player = new Player( "勇者", 1, 0, 20, 12, 5 );
+			Player player = new Player( "えなりかずき", 100, 0, 210, 12, 8 );
 
 			while ( true )
 			{
@@ -64,7 +64,7 @@ namespace Class06
 
 				if ( !player.IsAlive )
 				{
-					Console.WriteLine( "ゲームオーバー" );
+					Console.WriteLine( "YOU LOSE" );
 					break;
 				}
 				Console.WriteLine( );

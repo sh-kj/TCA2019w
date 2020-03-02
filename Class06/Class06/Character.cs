@@ -91,9 +91,21 @@ namespace Class06
 	//ダメージ計算用クラス
 	static class DamageCalculator
 	{
-
+        private static Random RandomProvider = new Random(DateTime.Now.Millisecond);
 		public static int CalcDamage(Character attacker, Character target)
 		{
+            int minimumDamage = (attacker.AttackPower - target.DefencePower / 2) / 4;
+            int maximumDamage = (attacker.AttackPower - target.DefencePower / 2) / 2;
+
+            if (minimumDamage < 1)
+            {
+                minimumDamage = 1;
+            }
+            if(maximumDamage<1)
+            {
+                maximumDamage = 1;
+            }
+            int damage=RandomProvider.Next(minimumDamage, maximumDamage);
 			return attacker.AttackPower - target.DefencePower;
 		}
 	}
